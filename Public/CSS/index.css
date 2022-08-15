@@ -1,0 +1,42 @@
+header, footer, main { 
+	background-color:yellow;
+}
+
+#avertissement {
+	display:none;
+}
+
+@media screen and (max-width: 700px)
+{
+    header, footer, main { 
+		background-color:orange;
+	}
+	
+	#avertissement {
+		display:block;
+		color:white;
+		background-color:red;
+		margin:10px;
+		padding:10px;
+	}
+}
+
+section { max-width:900px; }
+nav {width:200px;}
+
+nav a {
+	display:block;
+	text-decoration:none;
+	color:white;
+	background-color:green;
+	margin:10px;
+	padding:10px;
+	border-radius:8px;
+}
+
+nav a:hover {background-color:blue;}
+
+section, nav  {
+	display:inline-block;
+	vertical-align:top;
+}
