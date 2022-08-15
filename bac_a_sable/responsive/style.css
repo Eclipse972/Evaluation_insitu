@@ -1,0 +1,21 @@
+header, footer, main { 
+	background-color:yellow;
+}
+
+@media screen and (max-width: 900px)
+{
+    header, footer, main { 
+		background-color:orange;
+	}
+}
+
+
+section { max-width:900px; }
+nav {width:200px;}
+
+nav a {display:block;}
+
+section, nav  {
+	display:inline-block;
+	vertical-align:top;
+}
