@@ -19,11 +19,16 @@ header, footer, main {
 	}
 }
 
-
 section { max-width:900px; }
 nav {width:200px;}
 
-nav a {display:block;}
+nav a {
+	display:block;
+	text-decoration:none;
+	background-color:green;
+	margin:10px;
+	padding:10px;
+}
 
 section, nav  {
 	display:inline-block;
