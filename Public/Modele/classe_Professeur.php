@@ -4,7 +4,7 @@ class Professeur
 private ID;
 private pseudo;
 private hashPWD;
-private nom
+private nom;
 private prenom;
 private email;
 
