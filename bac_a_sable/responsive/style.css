@@ -2,7 +2,7 @@ header, footer, main {
 	background-color:yellow;
 }
 
-@media screen and (max-width: 900px)
+@media screen and (max-width: 700px)
 {
     header, footer, main { 
 		background-color:orange;
