@@ -13,9 +13,11 @@ header, footer, main {
 	}
 	
 	#avertissement {
-		display:contents;
+		display:block;
 		color:white;
 		background-color:red;
+		margin:10px;
+		padding:10px;
 	}
 }
 
@@ -25,10 +27,14 @@ nav {width:200px;}
 nav a {
 	display:block;
 	text-decoration:none;
+	color:white;
 	background-color:green;
 	margin:10px;
 	padding:10px;
+	border-radius:8px;
 }
+
+nav a:hover {background-color:blue;}
 
 section, nav  {
 	display:inline-block;
