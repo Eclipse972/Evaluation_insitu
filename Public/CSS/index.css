@@ -1,28 +1,32 @@
 header, footer, main { 
 	background-color:yellow;
+	max-width:1080px;
+	font-size:12px;
+	margin:auto;
 }
 
 #avertissement {
 	display:none;
+	color:white;
+	width:90%;
+	background-color:red;
+	margin:auto;
+	padding:10px;
+
 }
 
-@media screen and (max-width: 700px)
+h1 { font-size:30px; }
+
+@media(max-width: 767px)
 {
-    header, footer, main { 
-		background-color:orange;
-	}
+    header, footer, main { background-color:orange;	}
 	
-	#avertissement {
-		display:block;
-		color:white;
-		background-color:red;
-		margin:10px;
-		padding:10px;
-	}
+	#avertissement { display:block; }
 }
 
 section { max-width:900px; }
-nav {width:200px;}
+
+nav { width:100px; }
 
 nav a {
 	display:block;
