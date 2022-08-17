@@ -5,7 +5,7 @@ header, footer, main {
 	margin:auto;
 }
 
-#avertissement {	/* écrant trop petit */
+#avertissement {	/* écran trop petit */
 	display:none;	/* non affiché par défaut */
 	color:white;
 	width:90%;
@@ -16,13 +16,6 @@ header, footer, main {
 
 h1	{ font-size:30px; }
 p	{ font-size:25px; }
-
-@media(max-width: 767px)
-{
-    header, footer, main { background-color:orange;	}
-	
-	#avertissement { display:block; }	/* provoque l'affichage de l'avertissement */
-}
 
 section { max-width:850px; }
 
@@ -39,9 +32,17 @@ nav a {
 	font-size:20px;
 }
 
-nav a:hover {background-color:blue;}
+nav a:hover { background-color:blue; }
 
 section, nav  {
 	display:inline-block;
 	vertical-align:top;
+}
+
+/* Modifications pour affichage sur les petits écrans */
+@media(max-width: 767px)
+{
+    header, footer, main { background-color:orange;	}
+	
+	#avertissement { display:block; }	/* provoque l'affichage de l'avertissement s'il est défini */
 }
