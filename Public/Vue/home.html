@@ -4,7 +4,6 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta meta name="viewport" content="width=device-width, user-scalable=no" />
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&effect=outline" />
 	<?=$PAGE->getCSS()?>
 </head>
 
@@ -12,11 +11,8 @@
 
 <main role="main"> <!--remarque: <main> suffit à Chrome pour tenir compte de la feuille de style.-->
 
-	<div id="avertissement">
-		<h1>Attention !</h1>
-		<p>Cette page n&apos;est pas con&ccedil;ue pour &ecirc;tre affich&eacute;e sur un petit &eacute;cran.</p>
-		<p>Basculez en mode portrait ou utilisez un ordinateur</p>
-	</div>
+<?php include"Vue/commun/avertissement.html"; ?>
+
 	<section>
 		<h1>Bienvenu.e</h1>
 		<p>Djenbo èk Rakoun. An jou,konpè Djenbo asou an gwo pyébwa,
