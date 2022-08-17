@@ -4,4 +4,3 @@ $this->setHeaderText("<p class=\"font-effect-outline\">&Eacute;valuation en temp
 $this->setLogo("logo.png");
 $this->setFooter(" - <a href=/Contact>Me contacter</a>");
 $this->setView("home.html");
-$this->setCSS(array("commun"));
