@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<?php include"Vue/commun/balise_head.html"; ?>
+</head>
+
+<body>
+
+<main role="main"> <!--remarque: <main> suffit à Chrome pour tenir compte de la feuille de style.-->
+
+<section>
+	<h1>Erreur<?=$PAGE->getCodeErreur()?>: <?=$PAGE->getTitreErreur()?></h1>
+	<?=$PAGE->getCorpsErreur()?>
+	<?=($PAGE->getAlpha() >= 0) ? "<p>Noeud : {$PAGE->getAlpha()} - {$PAGE->getBeta()} - {$PAGE->getGamma()}</p>\n" : ""?>
+	<p>Si le probl&egrave;me persiste envoyez-moi un courriel en <a href="mailto:christophe.hervi@ac-miens.fr">cliquant ici</a>.</p>
+	<a href=/>Retour page d&apos;accueil</a>
+</section>
+
+</main>
+
+<footer>
+</footer>
+
+</body>
+</html>
