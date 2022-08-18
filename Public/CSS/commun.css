@@ -24,6 +24,7 @@ p	{ font-size:25px; }
 header {
 	margin-bottom:5px;
 	background-image:linear-gradient(to right, white, var(--couleur5));
+	color:black;
 }
 header img {
 	max-height: 80px;
@@ -80,6 +81,7 @@ section, nav  {
 @media(max-width: 767px)
 {
     header, footer, main { background-color:orange;	}
+    header { color:white; }
 	
 	#avertissement { display:block; }	/* provoque l'affichage de l'avertissement s'il est défini */
 }
