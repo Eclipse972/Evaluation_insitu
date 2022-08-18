@@ -1,21 +1,48 @@
+body {
+	/* déclaration des variables */
+	/* palette de couleurs Source http://www.code-couleur.com/palettes.html */
+	--couleur1: #E6E2AF;
+	--couleur2: #A7A37E;
+	--couleur3: #EFECCA;
+	--couleur4: #046380;
+	--couleur5: #002F2F;
+
+	/* les largeurs du sites */
+	--largeur_PC:1080px;
+	--largeur_mobile:750px;
+	--largeur_logo:100px;
+	/* fin de déclaraion de variables */
+	
+	background-color:var(--couleur3);
+	font-family: 'Quicksand', sans-serif;
+}
+
+h1	{ font-size:30px; }
+p	{ font-size:25px; }
+
+/* l'en-tete ---------------------------------------------------------------------------------- */
+header {
+	margin-bottom:5px;
+	background-image:linear-gradient(to right, white, var(--couleur5));
+}
+header img {
+	max-height: 80px;
+	padding: 8px;
+	vertical-align:middle;
+}
+
+header p {
+	margin:10px;
+	font-weight:bold;
+	font-size: 36px;
+}
+
 header, footer, main { 
 	background-color:yellow;
 	max-width:1080px;
 	font-size:12px;
 	margin:auto;
 }
-
-#avertissement {	/* écran trop petit */
-	display:none;	/* non affiché par défaut */
-	color:white;
-	width:90%;
-	background-color:red;
-	margin:auto;
-	padding:10px;
-}
-
-h1	{ font-size:30px; }
-p	{ font-size:25px; }
 
 section { max-width:850px; }
 
@@ -39,7 +66,17 @@ section, nav  {
 	vertical-align:top;
 }
 
-/* Modifications pour affichage sur les petits écrans */
+/* Avertissement pour petits écrans ------------------------------------------------------------------- */
+#avertissement {
+	display:none;	/* non affiché par défaut */
+	color:white;
+	width:90%;
+	background-color:red;
+	margin:auto;
+	padding:10px;
+}
+
+/* Modifications pour affichage sur les petits écrans ============================================= */
 @media(max-width: 767px)
 {
     header, footer, main { background-color:orange;	}
