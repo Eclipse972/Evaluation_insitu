@@ -70,10 +70,10 @@ section, nav  {
 #avertissement {
 	display:none;	/* non affiché par défaut */
 	color:white;
-	width:90%;
 	background-color:red;
 	margin:auto;
 	padding:10px;
+	margin-bottom:5px;
 }
 
 /* Modifications pour affichage sur les petits écrans ============================================= */
