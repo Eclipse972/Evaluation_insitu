@@ -1,4 +1,9 @@
 /* page de connexion */
+
+form {
+	padding:10px;
+}
+
 form a {
 	display:block;
 }
