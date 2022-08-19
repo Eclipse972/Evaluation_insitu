@@ -84,6 +84,8 @@ section, nav  {
 footer {
 	background-color:var(--couleur2);
 	margin-top:9px;
+	display: flex;
+    justify-content: center;
 }
 
 footer p, footer img {
