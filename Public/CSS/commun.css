@@ -77,6 +77,8 @@ section, nav  {
 	margin-bottom:5px;
 }
 
+#avertissement p,#avertissement h1 { margin: 9px 0 0 0; }
+
 /* Modifications pour affichage sur les petits écrans ============================================= */
 @media(max-width: 767px)
 {
