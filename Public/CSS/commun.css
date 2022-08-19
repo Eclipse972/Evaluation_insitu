@@ -39,15 +39,22 @@ header p {
 }
 
 header, footer, main { 
-	background-color:yellow;
 	max-width:1080px;
 	font-size:12px;
 	margin:auto;
 }
 
-section { max-width:850px; }
+/* Section ------------------------------------------------------------------- */
+section {
+	max-width:850px;
+	background-color:yellow;
+}
 
-nav { width:200px; }
+/* Navigation ------------------------------------------------------------------- */
+nav {
+	width:200px;
+	background-color:var(--couleur3);
+}
 
 nav a {
 	display:block;
@@ -82,7 +89,8 @@ section, nav  {
 /* Modifications pour affichage sur les petits écrans ============================================= */
 @media(max-width: 767px)
 {
-    header, footer, main { background-color:orange;	}
+    section { background-color:orange;	}
+    
     header { color:white; }
 	
 	#avertissement { display:block; }	/* provoque l'affichage de l'avertissement s'il est défini */
