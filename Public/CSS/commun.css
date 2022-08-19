@@ -17,9 +17,6 @@ body {
 	font-family: 'Quicksand', sans-serif;
 }
 
-h1	{ font-size:30px; }
-p	{ font-size:25px; }
-
 /* l'en-tete ---------------------------------------------------------------------------------- */
 header {
 	margin-bottom:5px;
@@ -35,7 +32,7 @@ header img {
 header p {
 	margin:10px;
 	font-weight:bold;
-	font-size: 36px;
+	font-size: 30px;
 }
 
 header, footer, main { 
@@ -48,7 +45,14 @@ header, footer, main {
 section {
 	max-width:850px;
 	background-color:yellow;
+	padding:5px;
 }
+
+section p {
+	font-size:25px;
+}
+
+section h1 { font-size:30px; }
 
 /* Navigation ------------------------------------------------------------------- */
 nav {
@@ -69,10 +73,35 @@ nav a {
 
 nav a:hover { background-color:blue; }
 
+nav p { font-size:30px; }
+
 section, nav  {
 	display:inline-block;
 	vertical-align:top;
 }
+
+/* pied de page ------------------------------------------------------------------- */
+footer {
+	background-color:var(--couleur2);
+	margin-top:9px;
+}
+
+footer p, footer img {
+	display:inline-block;
+}
+
+footer img {
+	height: 40px;
+	vertical-align:middle;
+	margin: 9px 0 9px 0;
+}
+
+footer p {
+	margin:0 20px 0 5px;
+	font-size:16px;
+	color:var(--couleur5);
+}
+#pied2page { margin:auto; }
 
 /* Avertissement pour petits écrans ------------------------------------------------------------------- */
 #avertissement {
@@ -86,6 +115,8 @@ section, nav  {
 
 #avertissement p,#avertissement h1 { margin: 9px 0 0 0; }
 
+#avertissement p { font-size:18px; }
+
 /* Modifications pour affichage sur les petits écrans ============================================= */
 @media(max-width: 767px)
 {
@@ -94,4 +125,6 @@ section, nav  {
     header { color:white; }
 	
 	#avertissement { display:block; }	/* provoque l'affichage de l'avertissement s'il est défini */
+
+	footer p { display:none; }
 }
