@@ -1,12 +1,6 @@
 <?php
-class Professeur {
-	private ID;
-	private pseudo;
-	private hashPWD;
-	private nom;
-	private prenom;
-	private email;
-
+class Professeur extends PEUNC\User
+{
 	function __construct() {
 	}
 
