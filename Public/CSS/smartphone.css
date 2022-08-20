@@ -1,3 +1,17 @@
+/* Avertissement pour petits écrans ------------------------------------------------------------------- */
+#avertissement {
+	display:none;	/* non affiché par défaut */
+	color:white;
+	background-color:red;
+	margin:auto;
+	padding:10px;
+	margin-bottom:5px;
+}
+
+#avertissement p,#avertissement h1 { margin: 9px 0 0 0; }
+
+#avertissement p { font-size:18px; }
+
 @media(max-width: 767px)
 {
     section { background-color:orange;	}
