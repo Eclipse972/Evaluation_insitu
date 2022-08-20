@@ -7,10 +7,9 @@ body {
 	--couleur4: #046380;
 	--couleur5: #002F2F;
 
-	/* les largeurs du sites */
+	/* les largeurs du site */
 	--largeur_PC:1080px;
 	--largeur_mobile:750px;
-	--largeur_logo:100px;
 	/* fin de déclaraion de variables */
 	
 	background-color:var(--couleur3);
