@@ -5,6 +5,8 @@ interface iUser
 /* 
  * */
 {
+	protected function __destruct();	// obligatoire car un utilisateur est toujours lié à d'autres objets
+
 // Assesseurs (setters)
 	public function setID($entier);
 	public function setPseudo($texte);
@@ -22,5 +24,7 @@ interface iUser
 	public function getCouriel();
 
 // Autres
+	public function PseudoDejaPris($texte);
+	public function MDPincorrect($texte);
 
 }
