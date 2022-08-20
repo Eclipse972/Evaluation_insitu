@@ -1,9 +1,16 @@
-/* page de connexion */
-
 form {
 	padding:10px;
+	width:500px;
+	margin:auto;
+	font-size:16px;
 }
 
 form a {
 	display:block;
+}
+
+form p, form input {
+	width:300px;
+	margin-top:5px;
+	margin-bottom:5px;
 }

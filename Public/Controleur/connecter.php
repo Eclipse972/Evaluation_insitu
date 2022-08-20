@@ -1,4 +1,4 @@
 <?php	// page de connexion
 $this->setHeaderText("Connexion");
-$this->setCSS(["navigation", "connecter"]);
+$this->setCSS(["connecter"]);
 $this->setView("connecter.html");
