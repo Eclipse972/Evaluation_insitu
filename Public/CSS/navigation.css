@@ -1,0 +1,27 @@
+/* toutes les pages n'ont une bare de navigation comme les pages d'erreur */
+section { max-width:850px; }
+
+nav {
+	width:200px;
+	background-color:var(--couleur3);
+}
+
+section, nav  {
+	display:inline-block;
+	vertical-align:top;
+}
+
+nav a {
+	display:block;
+	text-decoration:none;
+	color:white;
+	background-color:green;
+	margin:10px;
+	padding:5px;
+	border-radius:8px;
+	font-size:20px;
+}
+
+nav a:hover { background-color:blue; }
+
+nav p { font-size:30px; }

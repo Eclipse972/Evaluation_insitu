@@ -1,4 +1,4 @@
 <?php	// page d'accueil
 $this->setHeaderText("Accueil");
-$this->setLogo("logo.png");
+$this->setCSS(["navigation"]);
 $this->setView("home.html");
