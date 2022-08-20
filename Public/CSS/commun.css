@@ -90,15 +90,3 @@ footer p {
 #avertissement p,#avertissement h1 { margin: 9px 0 0 0; }
 
 #avertissement p { font-size:18px; }
-
-/* Modifications pour affichage sur les petits écrans ============================================= */
-@media(max-width: 767px)
-{
-    section { background-color:orange;	}
-    
-    header { color:white; }
-	
-	#avertissement { display:block; }	/* provoque l'affichage de l'avertissement s'il est défini */
-
-	footer p { display:none; }
-}

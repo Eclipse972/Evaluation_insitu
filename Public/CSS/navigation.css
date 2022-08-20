@@ -1,4 +1,4 @@
-/* toutes les pages n'ont une bare de navigation comme les pages d'erreur */
+/* toutes les pages n'ont une barre de navigation (les pages d'erreur par exemple) */
 section { max-width:850px; }
 
 nav {

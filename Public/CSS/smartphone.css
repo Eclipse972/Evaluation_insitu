@@ -1,0 +1,14 @@
+@media(max-width: 767px)
+{
+    section { background-color:orange;	}
+    
+    header { color:white; }
+	
+	#avertissement { display:block; }	/* provoque l'affichage de l'avertissement s'il est défini */
+
+	nav { width:100%; }
+
+	section, nav  { display:block; }
+
+	footer p { display:none; }
+}
