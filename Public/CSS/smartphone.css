@@ -20,9 +20,10 @@
 	
 	#avertissement { display:block; }	/* provoque l'affichage de l'avertissement s'il est défini */
 
-	nav { width:100%; }
-
-	section, nav  { display:block; }
+	section, nav  {
+		display:block;
+		width:100%;
+	}
 
 	footer p { display:none; }
 }
