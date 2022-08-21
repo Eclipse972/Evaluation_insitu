@@ -21,8 +21,12 @@ header {
 	margin-bottom:5px;
 	background-image:linear-gradient(to right, white, var(--couleur5));
 	color:black;
+	display:flex;
+	align-items:center;
 }
+
 header img {
+	display:block;
 	max-height: 80px;
 	padding: 8px;
 	vertical-align:middle;
@@ -36,8 +40,6 @@ header p {
 
 header, footer, main { 
 	max-width:1080px;
-	font-size:12px;
-	margin:auto;
 }
 
 /* Main ---------------------------------------------------------------------------------------- */
