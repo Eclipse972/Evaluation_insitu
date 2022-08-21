@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: c.hervi.sql.free.fr
--- Généré le : Dim 21 Août 2022 à 01:08
+-- Généré le : Dim 21 Août 2022 à 03:51
 -- Version du serveur: 5.0.83
 -- Version de PHP: 5.3.9
 
