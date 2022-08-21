@@ -34,9 +34,8 @@ try
 }
 catch(Exception $e)
 {
-	$PAGE = new PEUNC\Erreur($route->getAlpha(), $route->getBeta(), $route->getGamma(), "GET");
-	$PAGE->setTitle("Les dossiers techniques de ChristopHe");
-	$PAGE->setHeaderText("<p class=\"font-effect-outline\">Evaluation in situ</p>");
+	$PAGE = new PEUNC\Erreur($route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode());
+	$PAGE->setHeaderText("<p>Evaluation in situ</p>");
 	$PAGE->setCodeErreur("application");
 	$PAGE->setTitreErreur($e->getMessage());
 	$PAGE->setCorpsErreur("");
