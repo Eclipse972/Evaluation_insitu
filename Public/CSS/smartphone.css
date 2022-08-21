@@ -17,13 +17,14 @@
     section { background-color:orange;	}
     
     header { color:white; }
+
+    section { width:auto; }
 	
-	#avertissement { display:block; }	/* provoque l'affichage de l'avertissement s'il est défini */
+	section, nav, #avertissement { display:block; } /* l'avertissement s'affiche s'il est défini */
 
-	section, nav  {
-		display:block;
-		width:100%;
-	}
+	nav  { width:100%; }	/* désormais la barre de navigation prend toute la largeur */
+	
+	footer p { display:none; } /* Les textes disparaissent dans le pied de page */
 
-	footer p { display:none; }
+	footer img { margin-right:20px; }
 }
