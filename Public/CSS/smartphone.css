@@ -17,8 +17,6 @@
     section { background-color:orange;	}
     
     header { color:white; }
-
-    section { width:auto; }
 	
 	section, nav, #avertissement { display:block; } /* l'avertissement s'affiche s'il est défini */
 

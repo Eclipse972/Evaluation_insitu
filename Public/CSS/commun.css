@@ -40,6 +40,12 @@ header, footer, main {
 	margin:auto;
 }
 
+/* Main ---------------------------------------------------------------------------------------- */
+main {
+	display:flex;
+	flex-wrap: wrap;
+}
+
 /* Section ------------------------------------------------------------------- */
 section {
 	background-color:yellow;
