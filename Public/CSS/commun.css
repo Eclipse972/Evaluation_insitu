@@ -44,14 +44,12 @@ header, footer, main {
 section {
 	background-color:yellow;
 	padding:5px;
-}
-
-section p {
-	font-size:25px;
+	font-size:18px;
 }
 
 section h1 { font-size:30px; }
 
+section p,section h1 { margin: 9px 0 0 0; }
 
 /* pied de page ------------------------------------------------------------------- */
 footer {
