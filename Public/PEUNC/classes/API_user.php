@@ -5,7 +5,7 @@ interface iUser
 /* 
  * */
 {
-	protected function __destruct();	// obligatoire car un utilisateur est toujours lié à d'autres objets
+// créer un destructeur est obligatoire car un utilisateur est toujours lié à d'autres objets
 
 // Assesseurs (setters)
 	public function setID($entier);
