@@ -3,14 +3,14 @@ namespace PEUNC;
 
 include"API_user.php";
 
-class User
+class User implements iUser
 {
-	private ID;
-	private pseudo;
-	private MDP;
-	private nom;
-	private prenom;
-	private courriel;
+	protected $ID;
+	protected $pseudo;
+	protected $MDP;
+	protected $nom;
+	protected $prenom;
+	protected $courriel;
 
 	public function __construct()
 	{
