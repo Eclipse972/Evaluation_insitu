@@ -1,6 +1,7 @@
 <?php
 // contrôleur pour les erreurs serveur
 $this->setHeaderText("Erreur serveur");
+$this->setFooter("");
 $this->setView("erreur.html");
 $this->setCSS(array("erreur"));
 

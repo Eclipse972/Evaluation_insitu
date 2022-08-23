@@ -6,7 +6,14 @@
 		<img src="/images/message.png" alt="envoyer un message">
 		<p>Envoyer un message au webmaster</p>
 	</a>
-	<a href=#>
-		<img src="/images/aide.png" alt="aide">
+<?php
+	if ($PAGE->getFooter() != "")
+	{
+?>
+	<a href=/<?=$PAGE->getFooter()?>/aide>
+		<img src=/images/aide.png alt="aide">
 		<p>Aide</p>
 	</a>
+<?php
+	}
+?>
