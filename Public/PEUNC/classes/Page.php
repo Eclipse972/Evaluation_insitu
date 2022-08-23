@@ -103,7 +103,7 @@ class Page implements iPage	{
 
 	public function getSection()		{ return $this->scriptSection; }
 
-	public function getNav()			{ return "\t<nav>\n" . $this->scriptSection . "\t</nav>\n"; }
+	public function getNav()			{ return ($this->scriptSection == "") ? "" : "<nav>\n" . $this->scriptSection . "</nav>\n"; }
 	
 	public function getFooter()			{ return $this->PiedDePage; }
 
