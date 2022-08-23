@@ -29,12 +29,12 @@ $this->setSection($tampon);
 
 ob_start();	// début du code <nav>
 ?>
-<a href=#>Modifier profil</a>
+<a href=/professeur/modifier>Modifier profil</a>
 <a href=#>Classes</a>
 <a href=#>Devoirs</a>
 <a href=#>Comp&eacute;tences</a>
 <a href=#>&Eacute;valuer</a>
-<a href=#>D&eacute;connexion</a>
+<a href=/deconnexion>D&eacute;connexion</a>
 <?php
 $tampon = ob_get_contents();
 ob_end_clean();
