@@ -1,13 +1,15 @@
 <?php // controleur de la page professeur
+$IDprof = isset($_SESSION["IDprof"]) ? $_SESSION["IDprof"] : 1; // identifiant du prof actuel
+
 $this->setCSS(["professeur"]);
 
 ob_start();	// début du code <section>
 ?>
 <h1>Profil</h1>
-<p>Pseudo: </p>
-<p>Nom: </p>
-<p>Pr&eacute;nom: </p>
-<p>Courriel: </p>
+<p>Pseudo: <?=PEUNC\BDD::SELECT("pseudo FROM Utilisateur WHERE ID = ?", [$IDprof])?></p>
+<p>Nom: <?=PEUNC\BDD::SELECT("nom FROM Utilisateur WHERE ID = ?", [$IDprof])?></p>
+<p>Pr&eacute;nom: <?=PEUNC\BDD::SELECT("prenom FROM Utilisateur WHERE ID = ?", [$IDprof])?></p>
+<p>Courriel: <?=PEUNC\BDD::SELECT("courriel FROM Utilisateur WHERE ID = ?", [$IDprof])?></p>
 
 <h1>Vos devoirs</h1>
 <p>En construction ...</p>
