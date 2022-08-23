@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<!-- page par défaut sans barre de navigation -->
+<head>
+<?php include"Vue/commun/balise_head.html"; ?>
+</head>
+
+<body>
+
+<header>
+<?php include"Vue/commun/balise_header.html"; ?>
+</header>
+
+<main role="main"> <!--remarque: <main> suffit à Chrome pour tenir compte de la feuille de style.-->
+
+<section>
+<?=$PAGE->getSection()?>
+</section>
+
+</main>
+
+<footer>
+<?php include"Vue/commun/balise_footer.html"; ?>
+</footer>
+
+</body>
+</html>
