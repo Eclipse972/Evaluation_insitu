@@ -22,7 +22,7 @@ class Page implements iPage	{
 
 	protected $titrePage	= "Titre de la page affiché dans la barre du haut du navigateur";
 	protected $T_CSS		= [];
-	protected $entetePage	= "En-tête de la page affichée";
+	protected $entetePage;	// la valeur par défaut est donnée par le champ texteMenu dans le squelette
 	protected $logo			= "logo.png";
 	protected $dossier		= "/";
 	protected $scriptSection= "<h1>Page en construction</h1>\n<p>Contactez l&apos;adminitrateur si le probl&egrave;me persiste </p>\n";
@@ -46,6 +46,8 @@ class Page implements iPage	{
 		$this->beta = $beta;
 		$this->gamma = $gamma;
 		$this->methode = $methode;
+		$this->entetePage = BDD::SELECT("texteMenu FROM Squelette WHERE alpha= ? AND beta= ? AND gamma= ? AND methode = ?",
+								[$alpha, $beta, $gamma, $methode]); // valeur par défaut
 		foreach($TparamURL as $valeur)
 			$this->T_paramURL[] = htmlspecialchars($valeur);
 	}

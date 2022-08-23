@@ -1,6 +1,4 @@
 <?php
-$this->setHeaderText("D&eacute;mo");
-
 ob_start();	// début du code <section>
 ?>
 	<h1>Le mode d&eacute;monstration</h1>

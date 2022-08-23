@@ -1,6 +1,4 @@
 <?php
-$this->setHeaderText("Pb de connexion?");
-
 ob_start();	// début du code <section>
 ?>
 <h1>Mot de passe ou pseudo oubli&eacute;?</h1>

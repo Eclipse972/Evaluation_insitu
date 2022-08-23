@@ -1,6 +1,4 @@
 <?php
-$this->setHeaderText("Aide");
-
 ob_start();	// début du code <section>
 ?>
 	<h1>La page professeur</h1>

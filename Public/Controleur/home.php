@@ -1,6 +1,4 @@
 <?php	// page d'accueil
-$this->setHeaderText("Accueil");
-
 ob_start();	// début du code <section>
 ?>
 <h1>Bienvenu.e</h1>
