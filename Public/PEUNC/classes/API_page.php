@@ -12,6 +12,7 @@ interface iPage
 	public function getTitle();		// affiche le titre du document (qui est affiché dans la barre de titre du navigateur ou dans l'onglet de la page)
 	public function getHeaderText();// en-tête de la page
 	public function getSection();	// affiche le code du corps de la page
+	public function getNav();		// nav
 	public function getFooter();	// pied de page
 	public function getView();		// chemin de la vue associée à la page
 	public function getParamURL($i);// retourne le i-ème paramètre passé par l'URL
@@ -22,6 +23,7 @@ interface iPage
 	public function setTitle($titre);			// affiche le titre du document (qui est affiché dans la barre de titre du navigateur ou dans l'onglet de la page)
 	public function setHeaderText($texte);		// en-tête de la page
 	public function setSection($code);			// affiche le code du corps de la page
+	public function setNav($code);				// affiche le code de la barre de navigation avec <nav> car cette balise est optionnelle
 	public function setFooter($code);			// pied de page
 	public function setView($fichier);			// définit le chemin de la vue
 	public function setDossier($dossier);		// défini le dossier associé à la page

@@ -26,6 +26,7 @@ class Page implements iPage	{
 	protected $logo			= "logo.png";
 	protected $dossier		= "/";
 	protected $scriptSection= "<h1>Page en construction</h1>\n<p>Contactez l&apos;adminitrateur si le probl&egrave;me persiste </p>\n";
+	protected $scriptNav	= "";
 	protected $PiedDePage	= "<p>Pied de page &agrave; d&eacute;finir</p>";
 	protected $vue			= "doctype.html";
 // FIN DE LA CONFIGURATION
@@ -61,6 +62,8 @@ class Page implements iPage	{
 
 	public function setSection($code)		{ $this->scriptSection = $code;	}
 
+	public function setNav($code)			{ $this->scriptNav = $code;	}
+
 	public function setFooter($code)		{ $this->PiedDePage = $code; }
 
 	public function setView($fichier)
@@ -90,16 +93,18 @@ class Page implements iPage	{
 /* ***************************
  * ASSESSURS (GETTER)
  * ***************************/
-	public function getTitle()			{ echo $this->titrePage; }
+	public function getTitle()			{ return $this->titrePage; }
 
-	public function getHeaderText() 	{ echo $this->entetePage,"\n"; }
+	public function getHeaderText() 	{ return $this->entetePage . "\n"; }
 
-	public function getLogo()			{ echo Page::BaliseImage($this->logo,'Logo'); }
+	public function getLogo()			{ return Page::BaliseImage($this->logo,'Logo'); }
 
 	public function getDossier()		{ return $this->dossier; }
 
-	public function getSection()		{ echo $this->scriptSection; }
+	public function getSection()		{ return $this->scriptSection; }
 
+	public function getNav()			{ return "<nav>\n" . $this->scriptSection . "\n</nav>\n"; }
+	
 	public function getFooter()			{ return $this->PiedDePage; }
 
 	public function getView()			{ return $this->vue; }
