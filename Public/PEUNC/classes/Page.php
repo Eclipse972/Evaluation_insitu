@@ -100,7 +100,7 @@ class Page implements iPage	{
 
 	public function getSection()		{ echo $this->scriptSection; }
 
-	public function getFooter()			{ echo $this->PiedDePage; }
+	public function getFooter()			{ return $this->PiedDePage; }
 
 	public function getView()			{ return $this->vue; }
 
