@@ -1,6 +1,5 @@
 <?php
 $this->setHeaderText("Aide");
-$this->setCSS([]);
 
 ob_start();	// début du code <section>
 ?>

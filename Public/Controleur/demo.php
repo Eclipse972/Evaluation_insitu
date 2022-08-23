@@ -1,6 +1,5 @@
 <?php
 $this->setHeaderText("D&eacute;mo");
-$this->setCSS([]);
 
 ob_start();	// début du code <section>
 ?>

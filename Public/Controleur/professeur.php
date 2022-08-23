@@ -1,5 +1,5 @@
 <?php // controleur de la page professeur
 $this->setHeaderText("Professeur");
-$this->setCSS(["navigation", "professeur"]);
+$this->setCSS(["professeur"]);
 $this->setFooter("professeur");
-$this->setView("professeur.html");
+$this->setView("doctype.html");

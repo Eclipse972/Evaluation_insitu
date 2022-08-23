@@ -2,6 +2,9 @@
 	<meta meta name="viewport" content="width=device-width, user-scalable=no" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&effect=outline" />
 	<link rel="stylesheet" href="/CSS/commun.css" />
-<?=$PAGE->getCSS()?>
+<?php
+	if ($PAGE->getNav() != "")	echo "<link rel=\"stylesheet\" href=\"/CSS/navigation.css\" />\n";
+	echo $PAGE->getCSS();
+?>
 	<link rel="stylesheet" href="/CSS/smartphone.css" />
 	<title>&Eacute;valuation in situ</title>
