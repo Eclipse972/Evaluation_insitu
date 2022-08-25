@@ -6,10 +6,8 @@ ob_start();	// début du code <section>
 <h1>Vous &ecirc;tes maintenant d&eacute;connect&eacute;.e</h1>
 <p>A bient&ocirc;t!</p>
 <?php
-$tampon = ob_get_contents();
+$this->setSection(ob_get_contents());
 ob_end_clean();
-
-$this->setSection($tampon);
 
 $this->setFooter("");
 $this->setView("doctype.html");

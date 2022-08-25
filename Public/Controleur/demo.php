@@ -9,10 +9,8 @@ ob_start();	// début du code <section>
 	<p><a href=/professeur>page Professeur en mode d&eacute;mo</a></p>
 	<p><a href=/connecter>Vous connecter</a></p>
 <?php
-$tampon = ob_get_contents();
+$this->setSection(ob_get_contents());
 ob_end_clean();
-
-$this->setSection($tampon);
 
 $this->setFooter("");
 $this->setView("doctype.html");

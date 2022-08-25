@@ -23,9 +23,8 @@ ob_start();	// début du code <section>
 <h1>Vos &eacute;valuations</h1>
 <p>En construction ...</p>
 <?php
-$tampon = ob_get_contents();
+$this->setSection(ob_get_contents());
 ob_end_clean();
-$this->setSection($tampon);
 
 ob_start();	// début du code <nav>
 ?>
@@ -36,9 +35,8 @@ ob_start();	// début du code <nav>
 <a href=#>&Eacute;valuer</a>
 <a href=/deconnexion>D&eacute;connexion</a>
 <?php
-$tampon = ob_get_contents();
+$this->setNav(ob_get_contents());
 ob_end_clean();
-$this->setNav($tampon);
 
 $this->setFooter("professeur");
 $this->setView("doctype.html");
