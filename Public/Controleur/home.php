@@ -16,5 +16,6 @@ ob_start();	// début du code <nav>
 $this->setNav(ob_get_contents());
 ob_end_clean();
 
+$this->setAvertissement();
 $this->setFooter("");
 $this->setView("doctype.html");
