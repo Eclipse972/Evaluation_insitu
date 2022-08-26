@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: c.hervi.sql.free.fr
--- Généré le : Mar 23 Août 2022 à 11:23
+-- Généré le : Ven 26 Août 2022 à 02:09
 -- Version du serveur: 5.0.83
 -- Version de PHP: 5.3.9
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `Squelette` (
   `paramAutorise` varchar(99) collate latin1_general_ci NOT NULL default '[]' COMMENT 'syntaxe JSON',
   PRIMARY KEY  (`ID`),
   UNIQUE KEY `navigation` (`alpha`,`beta`,`gamma`,`methode`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=13 ;
 
 --
 -- Contenu de la table `Squelette`
@@ -51,11 +51,14 @@ INSERT INTO `Squelette` (`ID`, `alpha`, `beta`, `gamma`, `texteMenu`, `imageMenu
 (2, -1, 404, 0, 'Cette page n&apos;existe pas', '', 'Page_inexistante', 'PEUNC\\Erreur', 'erreur_serveur.php', 'GET', '[]'),
 (3, -1, 403, 0, 'Acc&egrave;s interdit', '', 'Acces_interdit', 'PEUNC\\Erreur', 'erreur_serveur.php', 'GET', '[]'),
 (4, -1, 0, 0, 'Erreur inconnue', '', 'Erreur', 'PEUNC\\Erreur', 'erreur_serveur.php', 'GET', '[]'),
-(5, 0, 0, 0, 'Page d&apos;accueil', '', 'home', 'PEUNC\\Page', 'home.php', 'GET', '[]'),
-(6, 1, 0, 0, 'Connexion', '', 'connecter', 'PEUNC\\Page', 'connecter.php', 'GET', '[]'),
-(7, 2, 0, 0, 'Professeur', '', 'professeur', 'PEUNC\\Page', 'professeur.php', 'GET', '[]'),
-(8, 1, 1, 0, 'aide connexion', '', 'aide', 'PEUNC\\Page', 'aideConnexion.php', 'GET', '[]'),
-(9, 2, 1, 0, 'Aide prof', '', 'aide', 'PEUNC\\Page', 'aideProf.php', 'GET', '[]');
+(5, 0, 0, 0, 'Accueil', '', 'home', 'Page', 'home.php', 'GET', '[]'),
+(6, 1, 0, 0, 'Connexion', '', 'connecter', 'Page', 'connecter.php', 'GET', '[]'),
+(7, 2, 0, 0, 'Professeur', '', 'professeur', 'Page', 'professeur.php', 'GET', '[]'),
+(8, 1, 1, 0, 'Pb de connexion?', '', 'aide', 'Page', 'aideConnexion.php', 'GET', '[]'),
+(9, 2, 1, 0, 'Aide professeur', '', 'aide', 'Page', 'aideProf.php', 'GET', '[]'),
+(10, 3, 0, 0, 'Mode d&eacute;monstration', '', 'demonstration', 'Page', 'demo.php', 'GET', '[]'),
+(11, 2, 2, 0, 'Modifier Profil', '', 'modifier', 'Page', 'modifierProfil.php', 'GET', '[]'),
+(12, 4, 0, 0, 'D&eacute;connexion', '', 'deconnexion', 'Page', 'deconnecter.php', 'GET', '[]');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
