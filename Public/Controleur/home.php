@@ -10,8 +10,8 @@ ob_end_clean();
 
 ob_start();	// début du code <nav>
 ?>
-	<a href=/connecter>CONNEXION</a>
-	<a href=/demonstration>D&Eacute;MO</a>
+<a href=/connecter>CONNEXION</a>
+<a href=/demonstration>D&Eacute;MO</a>
 <?php
 $this->setNav(ob_get_contents());
 ob_end_clean();
