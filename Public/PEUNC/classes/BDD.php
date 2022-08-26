@@ -13,7 +13,10 @@ class BDD implements iBDD
 		require"connexion.php";
 		$this->BD = new \PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $user , $pwd);
 		if (isset($this->BD))
-			$this->BD->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
+		{
+			$this->BD->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE,	\PDO::FETCH_ASSOC);
+			$this->BD->setAttribute(\PDO::ATTR_ERRMODE,				\PDO::ERRMODE_EXCEPTION);
+		}
 		else
 			exit("Erreur fatale: connexion &agrave; la BDD");
 	}
@@ -31,23 +34,30 @@ class BDD implements iBDD
 
 	public static function SELECT($requete, array $T_parametre)
 	{
-		$pdo = self::getInstance();
-		$requete = $pdo->prepare("SELECT " . $requete);
-		$requete->execute($T_parametre);
-		$reponse = $requete->fetchAll();
-		$requete->closeCursor();
-		switch(count($reponse))
+		try
 		{
-			case 0:	// aucun résultat
-				$résultat = null;
-				break;
-			case 1:	// une seule ligne						une seule colonne					plusieurs colonnes
-				$résultat = (count($reponse[0]) == 1) ? $résultat = array_shift($reponse[0]) : $reponse[0];
-				break;
-			default: // plusieurs lignes
-				$résultat = $reponse;
+			$pdo = self::getInstance();
+			$requete = $pdo->prepare("SELECT " . $requete);
+			$requete->execute($T_parametre);
+			$reponse = $requete->fetchAll();
+			$requete->closeCursor();
+			switch(count($reponse))
+			{
+				case 0:	// aucun résultat
+					$résultat = null;
+					break;
+				case 1:	// une seule ligne						une seule colonne					plusieurs colonnes
+					$résultat = (count($reponse[0]) == 1) ? $résultat = array_shift($reponse[0]) : $reponse[0];
+					break;
+				default: // plusieurs lignes
+					$résultat = $reponse;
+			}
+			return $résultat;
 		}
-		return $résultat;
+		catch (PDOException $e)
+		{
+			throw new \Exception ("Erreur requete: " . $e->getMessage() . "\nrequete: SELECT " . $requete);
+		}
 	}
 
 	public static function Liste_niveau($alpha = null, $beta = null)
