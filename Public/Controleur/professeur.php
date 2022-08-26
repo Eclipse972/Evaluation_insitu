@@ -2,7 +2,7 @@
 $profID = isset($_SESSION["profID"]) ? $_SESSION["profID"] : 1; // identifiant du prof actuel
 
 $this->setCSS(["professeur"]);
-$essai = PEUNC\BDD::SELECT("pseudo_ FROM Utilisateur WHERE ID = ?", [$profID]);
+// $essai = PEUNC\BDD::SELECT("pseudo_ FROM Utilisateur WHERE ID = ?", [$profID]);
 
 ob_start();	// début du code <section>
 ?>

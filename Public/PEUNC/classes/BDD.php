@@ -56,7 +56,7 @@ class BDD implements iBDD
 		}
 		catch (PDOException $e)
 		{
-			throw new \Exception ("Erreur requete: " . $e->getMessage() . "\nrequete: SELECT " . $requete);
+			throw new \Exception("Erreur requete: " . $e->getMessage() . "\nrequete: SELECT " . $requete);
 		}
 	}
 
