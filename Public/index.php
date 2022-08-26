@@ -41,5 +41,6 @@ catch(Exception $e)
 	$PAGE->setCorpsErreur("");
 	$PAGE->setCSS(array("erreur"));
 	$PAGE->setView("erreur.html");
+	$PAGE->setFooter("");
 	include $PAGE->getView(); // insertion de la vue
 }
