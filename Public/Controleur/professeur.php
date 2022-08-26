@@ -4,13 +4,20 @@ $profID = isset($_SESSION["profID"]) ? $_SESSION["profID"] : 1; // identifiant d
 $this->setCSS(["professeur"]);
 // $essai = PEUNC\BDD::SELECT("pseudo_ FROM Utilisateur WHERE ID = ?", [$profID]);
 
+// list($pseudo, $nom, $prenom, $courriel) = ... à partir de PHP7
+$Treponse	= PEUNC\BDD::SELECT("pseudo, nom, prenom, courriel FROM Utilisateur WHERE ID = ?", [$profID]);
+$pseudo		= $Treponse["pseudo"];
+$nom		= $Treponse["nom"];
+$prenom		= $Treponse["prenom"];
+$courriel	= $Treponse["courriel"];
+
 ob_start();	// début du code <section>
 ?>
 <h1>Profil</h1>
-<p>Pseudo: <?=PEUNC\BDD::SELECT("pseudo FROM Utilisateur WHERE ID = ?", [$profID])?></p>
-<p>Nom: <?=PEUNC\BDD::SELECT("nom FROM Utilisateur WHERE ID = ?", [$profID])?></p>
-<p>Pr&eacute;nom: <?=PEUNC\BDD::SELECT("prenom FROM Utilisateur WHERE ID = ?", [$profID])?></p>
-<p>Courriel: <?=PEUNC\BDD::SELECT("courriel FROM Utilisateur WHERE ID = ?", [$profID])?></p>
+<p>Pseudo: <?=$pseudo?></p>
+<p>Nom: <?=$nom?></p>
+<p>Pr&eacute;nom: <?=$prenom?></p>
+<p>Courriel: <?=$courriel?></p>
 
 <h1>Vos classes</h1>
 <p>En construction ...</p>
