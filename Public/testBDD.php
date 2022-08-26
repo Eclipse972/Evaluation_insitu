@@ -3,10 +3,11 @@ require"PEUNC/classes/BDD.php";
 
 try
 {
-	PEUNC\BDD::SELECT("* FROM Squelett WHERE alpha = 0", []);
+	$requete = "* FROM Squelett WHERE alpha = 0";
+	PEUNC\BDD::SELECT($requete, []);
 	echo "RAS";
 }
 catch (PDOException $e)
 {
-	echo "message: " . $e->getMessage() . "\ncode=" .  $e->getCode();
+	echo "message: " . $e->getMessage() . "\n requete= SELECT " .  $requete;
 }
