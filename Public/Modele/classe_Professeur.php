@@ -12,7 +12,7 @@ class Professeur extends PEUNC\User
 			$this->nom		= $Treponse["nom"];
 			$this->prenom	= $Treponse["prenom"];
 			$this->courriel	= $Treponse["courriel"];
-		} else throw new Exception("Cr&eacute;ation objet Professeur imposible")
+		} else throw new Exception("Cr&eacute;ation objet Professeur impossible")
 	}
 
 	public function __destruct()
