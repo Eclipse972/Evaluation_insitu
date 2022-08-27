@@ -6,10 +6,13 @@ class Professeur extends PEUNC\User
 		$this->ID = $profID;
 		// list($pseudo, $nom, $prenom, $courriel) = ... à partir de PHP7
 		$Treponse = PEUNC\BDD::SELECT("pseudo, nom, prenom, courriel FROM Utilisateur WHERE ID = ?", [$profID]);
-		$this->pseudo	= $Treponse["pseudo"];
-		$this->nom		= $Treponse["nom"];
-		$this->prenom	= $Treponse["prenom"];
-		$this->courriel	= $Treponse["courriel"];
+		if (isset($Treponse)) 
+		{
+			$this->pseudo	= $Treponse["pseudo"];
+			$this->nom		= $Treponse["nom"];
+			$this->prenom	= $Treponse["prenom"];
+			$this->courriel	= $Treponse["courriel"];
+		} else throw new Exception("Cr&eacute;ation objet Professeur imposible")
 	}
 
 	public function __destruct()
