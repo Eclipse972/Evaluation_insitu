@@ -18,7 +18,7 @@ class BDD implements iBDD
 			$this->BD->setAttribute(\PDO::ATTR_ERRMODE,				\PDO::ERRMODE_EXCEPTION);
 		}
 		else
-			exit("Erreur fatale: connexion &agrave; la BDD");
+			exit("Erreur fatale: connexion &agrave; la base de données impossible!");
 	}
 
 	private static function getInstance()
