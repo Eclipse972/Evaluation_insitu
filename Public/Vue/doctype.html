@@ -10,9 +10,9 @@
 <?php include"Vue/commun/balise_header.html"; ?>
 </header>
 
-<div id="avertissement">
-<?=$PAGE->getAvertissement()?>
-</div>
+<?php
+	echo $PAGE->getAvertissement(); // cette méthode n'est a défini par PEUNC
+?>
 
 <main role="main">
 

@@ -39,7 +39,8 @@ class HttpRouter
 			case 403:	// accès interdit
 			case 405:	// méthode http non permise
 			case 500:	// erreur serveur
-				list($this->alpha, $this->beta, $this->gamma) = [-1, $_SERVER['REDIRECT_STATUS'], 0];
+				//list($this->alpha, $this->beta, $this->gamma) = [-1, $_SERVER['REDIRECT_STATUS'], 0];
+				throw new PEUNC\ServeurException($_SERVER['REDIRECT_STATUS']);
 				break;
 			case 200:	// le script est lancé sans redirection
 				list($this->alpha, $this->beta, $this->gamma) = HttpRouter::SansRedirection();
@@ -78,9 +79,9 @@ class HttpRouter
 			return array($Treponse["niveau1"], $Treponse["niveau2"], $Treponse["niveau3"]);
 		}
 		elseif (BDD::SELECT("count(*) FROM Vue_Routes WHERE URL = ?", [$URL]) > 0)	// au moins un noeud pour cet URL
-			return [-1, 405, 0];	// erreur 405!
+			throw new ServeurException(405); //return [-1, 405, 0];	// erreur 405!
 		else
-			return [-1, 404, 0];	// erreur 404!
+			throw new ServeurException(404); //return [-1, 404, 0];	// erreur 404!
 	}
 
 	private static function SansRedirection()
