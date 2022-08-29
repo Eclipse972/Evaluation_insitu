@@ -79,9 +79,9 @@ class HttpRouter
 			return array($Treponse["niveau1"], $Treponse["niveau2"], $Treponse["niveau3"]);
 		}
 		elseif (BDD::SELECT("count(*) FROM Vue_Routes WHERE URL = ?", [$URL]) > 0)	// au moins un noeud pour cet URL
-			throw new ServeurException(405); //return [-1, 405, 0];	// erreur 405!
+			throw new ServeurException(405);// erreur 405!
 		else
-			throw new ServeurException(404); //return [-1, 404, 0];	// erreur 404!
+			throw new ServeurException(404);// erreur 404!
 	}
 
 	private static function SansRedirection()
@@ -99,7 +99,7 @@ class HttpRouter
 				return Formulaire::DonnerPosition();
 				break;
 			default:
-				return [-1, 405, 0];	// erreur 405!
+				throw new ServeurException(405);// erreur 405!
 		}
 	}
 
