@@ -55,7 +55,7 @@ catch(PDOException $e)
 	$PAGE->setCSS(array("erreur"));
 	$PAGE->setView("doctype2.html");
 	$PAGE->setFooter("");
-	include $PAGE->getView(); // insertion de la vue
+	include $PAGE->getView();
 }
 catch(PEUNC\ApplicationException $e)
 {
@@ -68,17 +68,18 @@ catch(PEUNC\ApplicationException $e)
 	$PAGE->setCSS(array("erreur"));
 	$PAGE->setView("doctype2.html");
 	$PAGE->setFooter("");
-	include $PAGE->getView(); // insertion de la vue
+	include $PAGE->getView();
 }
 catch(Exception $e)
 {
-	$PAGE = new PEUNC\Erreur($route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode());
-	$PAGE->setHeaderText("<p>Evaluation in situ</p>");
-	$PAGE->setCodeErreur("application");
-	$PAGE->setTitreErreur($e->getMessage());
-	$PAGE->setCorpsErreur("");
+	$PAGE = new PEUNC\Page($route->getAlpha(),$route->getBeta(),$route->getGamma(),$route->getMethode());
+	$PAGE->setHeaderText("<p>Erreur inconnue</p>");
+	$PAGE->SetSection("<h1>" . $e->getMessage() . "</h1>\n"
+					. "<p>Noeud : {$PAGE->getAlpha()} - {$PAGE->getBeta()} - {$PAGE->getGamma()} M&eacute;thode:{$PAGE->getMethode()}</p>\n"
+					. "<p>Si le probl&egrave;me persiste envoyez-moi un courriel en cliquant sur l&apos;ic&ocirc;ne messagerie ci-dessous.</p>"
+				);
 	$PAGE->setCSS(array("erreur"));
-	$PAGE->setView("erreur.html");
+	$PAGE->setView("doctype2.html");
 	$PAGE->setFooter("");
-	include $PAGE->getView(); // insertion de la vue
+	include $PAGE->getView();
 }
