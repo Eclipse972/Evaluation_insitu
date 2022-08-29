@@ -34,15 +34,13 @@ try
 }
 catch(PEUNC\ServeurException $e)
 {
-	$PAGE = new PEUNC\Page($route->getAlpha(),$route->getBeta(),$route->getGamma(),$route->getMethode());
+	$PAGE = new PEUNC\Page(0,0,0,"GET");	// il n'y a pas de route
 	$PAGE->setHeaderText("<p>Erreur serveur</p>");
 	$PAGE->SetSection("<h1>" . $e->getMessage() . " - code: " . $e->getCode() . "</h1>\n"
 					. "<p>Image &agrave; venir</p>\n"
 					. "<p>Si le probl&egrave;me persiste envoyez-moi un courriel en cliquant sur l&apos;ic&ocirc;ne messagerie ci-dessous.</p>"
 				);
-	$PAGE->setCSS(array("erreur"));
 	$PAGE->setView("erreur.html");
-	$PAGE->setFooter("");
 	include $PAGE->getView();
 }
 catch(PDOException $e)
@@ -50,9 +48,7 @@ catch(PDOException $e)
 	$PAGE = new PEUNC\Page($route->getAlpha(),$route->getBeta(),$route->getGamma(),$route->getMethode());
 	$PAGE->setHeaderText("<p>Erreur de base de donn&eacute;es</p>");
 	$PAGE->SetSection("<h1>" . $e->getMessage() . "</h1>\n");
-	$PAGE->setCSS(array("erreur"));
 	$PAGE->setView("erreur.html");
-	$PAGE->setFooter("");
 	include $PAGE->getView();
 }
 catch(PEUNC\ApplicationException $e)
@@ -62,9 +58,7 @@ catch(PEUNC\ApplicationException $e)
 	$PAGE->SetSection("<h1>" . $e->getMessage() . "</h1>\n"
 					. "<p>Noeud : " . $PAGE->getAlpha() . " - " . $PAGE->getAlpha() . " - " . $PAGE->getGamma()
 					. " M&eacute;thode:" . $PAGE->getMethode() . "</p>\n");
-	$PAGE->setCSS(array("erreur"));
 	$PAGE->setView("erreur.html");
-	$PAGE->setFooter("");
 	include $PAGE->getView();
 }
 catch(Exception $e)
@@ -74,8 +68,6 @@ catch(Exception $e)
 	$PAGE->SetSection("<h1>" . $e->getMessage() . "</h1>\n"
 					. "<p>Noeud : " . $PAGE->getAlpha() . " - " . $PAGE->getAlpha() . " - " . $PAGE->getGamma()
 					. " M&eacute;thode:" . $PAGE->getMethode() . "</p>\n");
-	$PAGE->setCSS(array("erreur"));
 	$PAGE->setView("erreur.html");
-	$PAGE->setFooter("");
 	include $PAGE->getView();
 }
