@@ -57,6 +57,19 @@ catch(PDOException $e)
 	$PAGE->setFooter("");
 	include $PAGE->getView(); // insertion de la vue
 }
+catch(PEUNC\ApplicationException $e)
+{
+	$PAGE = new PEUNC\Page(0,0,0,"GET");	// route = page d'accueil
+	$PAGE->setHeaderText("<p>Erreur de l'application</p>");
+	$PAGE->SetSection("<h1>" . $e->getMessage() . "</h1>\n"
+					. "<p>Noeud : {$PAGE->getAlpha()} - {$PAGE->getBeta()} - {$PAGE->getGamma()} M&eacute;thode:{$PAGE->getMethode()}</p>\n"
+					. "<p>Si le probl&egrave;me persiste envoyez-moi un courriel en cliquant sur l&apos;ic&ocirc;ne messagerie ci-dessous.</p>"
+				);
+	$PAGE->setCSS(array("erreur"));
+	$PAGE->setView("doctype2.html");
+	$PAGE->setFooter("");
+	include $PAGE->getView(); // insertion de la vue
+}
 catch(Exception $e)
 {
 	$PAGE = new PEUNC\Erreur($route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode());
