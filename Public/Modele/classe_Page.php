@@ -22,5 +22,14 @@ class Page extends PEUNC\Page
 	public function setAvertissement()	{ $this->avertissement = true; } // certaines pages exigent un grand écran
 
 	// GETTERS ====================================================================================
-	public function getAvertissement()	{ return ($this->avertissement) ? "<h1>Attention !</h1>\n<p>Cette page n&apos;est pas con&ccedil;ue pour &ecirc;tre affich&eacute;e sur un &eacute;cran de faible largeur.</p>\n<p>Basculez en mode paysage ou utilisez un ordinateur</p>\n" : ""; }
+	public function getAvertissement()
+	{
+		return !$this->avertissement ? "" :
+			"<div id=avertissement>"
+			. "<h1>Attention</h1>\n"
+			. "<p>Cette page n&apos;est pas con&ccedil;ue pour les petits &eacute;crans</p>\n"
+			. "<p>Passez en mode paysage ou utilisez un ordinateur pour voir correctement cette page.</p>\n"
+			. "</div>\n";
+	}
+
 }
