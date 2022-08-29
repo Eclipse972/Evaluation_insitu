@@ -2,8 +2,8 @@
 -- version 3.1.5
 -- http://www.phpmyadmin.net
 --
--- Serveur: c.hervi.sql.free.fr
--- Généré le : Ven 26 Août 2022 à 02:09
+-- Serveur: evaluation.insitu.sql.free.fr
+-- Généré le : Mar 30 Août 2022 à 00:01
 -- Version du serveur: 5.0.83
 -- Version de PHP: 5.3.9
 
@@ -16,7 +16,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `c_hervi`
+-- Base de données: `evaluation_insitu`
 --
 
 -- --------------------------------------------------------
@@ -25,7 +25,6 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `Squelette`
 --
 
-DROP TABLE IF EXISTS `Squelette`;
 CREATE TABLE IF NOT EXISTS `Squelette` (
   `ID` int(11) NOT NULL auto_increment,
   `alpha` int(11) NOT NULL,
@@ -47,10 +46,6 @@ CREATE TABLE IF NOT EXISTS `Squelette` (
 --
 
 INSERT INTO `Squelette` (`ID`, `alpha`, `beta`, `gamma`, `texteMenu`, `imageMenu`, `ptiNom`, `classePage`, `controleur`, `methode`, `paramAutorise`) VALUES
-(1, -1, 500, 0, 'Serveur satur&eacute;', '', 'Serveur_sature', 'PEUNC\\Erreur', 'erreur_serveur.php', 'GET', '[]'),
-(2, -1, 404, 0, 'Cette page n&apos;existe pas', '', 'Page_inexistante', 'PEUNC\\Erreur', 'erreur_serveur.php', 'GET', '[]'),
-(3, -1, 403, 0, 'Acc&egrave;s interdit', '', 'Acces_interdit', 'PEUNC\\Erreur', 'erreur_serveur.php', 'GET', '[]'),
-(4, -1, 0, 0, 'Erreur inconnue', '', 'Erreur', 'PEUNC\\Erreur', 'erreur_serveur.php', 'GET', '[]'),
 (5, 0, 0, 0, 'Accueil', '', 'home', 'Page', 'home.php', 'GET', '[]'),
 (6, 1, 0, 0, 'Connexion', '', 'connecter', 'Page', 'connecter.php', 'GET', '[]'),
 (7, 2, 0, 0, 'Professeur', '', 'professeur', 'Page', 'professeur.php', 'GET', '[]'),
