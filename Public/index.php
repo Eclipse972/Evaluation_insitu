@@ -27,7 +27,7 @@ try
 	);
 	if (isset($MethodesSupportées[$route->getMethode()]))
 		$ReponseClient = $MethodesSupportées[$route->getMethode()];
-	else throw new \Exception("M&eacute;thode Http inconnue : " . $route->getMethode());
+	else throw new PEUNC\ApplicationException("M&eacute;thode Http inconnue : " . $route->getMethode());
 
 	// construction de la réponse en fonction de la route trouvée
 	$reponse = new $ReponseClient($route);
@@ -43,7 +43,7 @@ catch(PEUNC\ServeurException $e)
 	$PAGE->setCSS(array("erreur"));
 	$PAGE->setView("doctype2.html");
 	$PAGE->setFooter("");
-	include $PAGE->getView(); // insertion de la vue
+	include $PAGE->getView();
 }
 catch(PDOException $e)
 {
