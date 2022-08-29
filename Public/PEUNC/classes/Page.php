@@ -72,7 +72,7 @@ class Page implements iPage	{
 	{
 		if (file_exists(self::DOSSIER_VUE . $fichier))
 			$this->vue = self::DOSSIER_VUE . $fichier;
-		else throw new \Exception("Vue inexistante");
+		else throw new ApplicationException("Vue inexistante");
 	}
 
 	public function setCSS(array $Tableau)
@@ -168,12 +168,12 @@ class Page implements iPage	{
 		$script = BDD::SELECT("controleur FROM Squelette WHERE alpha= ? AND beta= ? AND gamma= ? AND methode = ?",
 							[$this->alpha, $this->beta, $this->gamma, $this->methode]);
 		if($script == "")
-			throw new \Exception("Controleur non d&eacute;fini");
+			throw new ApplicationException("Controleur non d&eacute;fini");
 		elseif (file_exists(self::DOSSIER_CONTROLEUR. $script))	// script dans le dossier des controleurs
 			require(self::DOSSIER_CONTROLEUR . $script);
 		elseif (file_exists($script))							//	script défini de manière absolue
 			require($script);
-		else throw new \Exception("Controleur inexistant");
+		else throw new ApplicationException("Controleur inexistant");
 	}
 
  	public function AfficherOnglets()

@@ -48,7 +48,8 @@ class HttpRouter
 				list($this->alpha, $this->beta, $this->gamma) = HttpRouter::Redirection404();
 				break;
 			default:
-				list($this->alpha, $this->beta, $this->gamma) = [-1, 0, 0];	// erreur inconnue
+				//list($this->alpha, $this->beta, $this->gamma) = [-1, 0, 0];	// erreur inconnue
+				throw new ApplicationException("erreur inconnue");
 		}
 
 		// recherche de l'ID du noeud
@@ -78,9 +79,9 @@ class HttpRouter
 			return array($Treponse["niveau1"], $Treponse["niveau2"], $Treponse["niveau3"]);
 		}
 		elseif (BDD::SELECT("count(*) FROM Vue_Routes WHERE URL = ?", [$URL]) > 0)	// au moins un noeud pour cet URL
-			throw new ServeurException(405);// erreur 405!
+			throw new ServeurException(405);
 		else
-			throw new ServeurException(404);// erreur 404!
+			throw new ServeurException(404);
 	}
 
 	private static function SansRedirection()

@@ -15,7 +15,7 @@ class ReponseClient
 								[$route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode()]);
 		if (isset($classePage))
 			$this->classePage = $classePage;
-		else throw new \Exception("La classe de page n&apos;est pas d&eacute;finie dans le squelette.");
+		else throw new ApplicationException("La classe de page n&apos;est pas d&eacute;finie dans le squelette.");
 	}
 
 	public function PrepareParametres($Tableau)

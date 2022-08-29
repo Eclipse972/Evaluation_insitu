@@ -42,10 +42,10 @@ class ReponsePOST extends ReponseClient
 			$jetonJSON = openssl_decrypt($jetonChiffré, $cipher, $key, $options=0, $iv);
 			$O_jeton = json_decode($fichier);
 			if (!isset($O_jeton))
-				throw new \Exception("Jeton XSRF corrompu");
+				throw new ApplicationException("Jeton XSRF corrompu");
 			elseif (time() - $O_jeton->depart < 5)
-				throw new \Exception("temps de r&eacute;ponse inhumain");
+				throw new ApplicationException("temps de r&eacute;ponse inhumain");
 		}
-		else throw new \Exception("Jeton XSRF absent");
+		else throw new ApplicationException("Jeton XSRF absent");
 	}
 }
