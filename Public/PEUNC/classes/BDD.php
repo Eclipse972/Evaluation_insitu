@@ -34,30 +34,23 @@ class BDD implements iBDD
 
 	public static function SELECT($requete, array $T_parametre)
 	{
-		try
+		$pdo = self::getInstance();
+		$requete = $pdo->prepare("SELECT " . $requete);
+		$requete->execute($T_parametre);
+		$reponse = $requete->fetchAll();
+		$requete->closeCursor();
+		switch(count($reponse))
 		{
-			$pdo = self::getInstance();
-			$requete = $pdo->prepare("SELECT " . $requete);
-			$requete->execute($T_parametre);
-			$reponse = $requete->fetchAll();
-			$requete->closeCursor();
-			switch(count($reponse))
-			{
-				case 0:	// aucun résultat
-					$résultat = null;
-					break;
-				case 1:	// une seule ligne						une seule colonne					plusieurs colonnes
-					$résultat = (count($reponse[0]) == 1) ? $résultat = array_shift($reponse[0]) : $reponse[0];
-					break;
-				default: // plusieurs lignes
-					$résultat = $reponse;
-			}
-			return $résultat;
+			case 0:	// aucun résultat
+				$résultat = null;
+				break;
+			case 1:	// une seule ligne						une seule colonne					plusieurs colonnes
+				$résultat = (count($reponse[0]) == 1) ? $résultat = array_shift($reponse[0]) : $reponse[0];
+				break;
+			default: // plusieurs lignes
+				$résultat = $reponse;
 		}
-		catch (PDOException $e)
-		{
-			throw new \Exception("Erreur requete: " . $e->getMessage() . "\nrequete: SELECT " . $requete);
-		}
+		return $résultat;
 	}
 
 	public static function Liste_niveau($alpha = null, $beta = null)
