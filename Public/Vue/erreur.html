@@ -10,14 +10,13 @@
 <?php include"Vue/commun/balise_header.html"; ?>
 </header>
 
-<main role="main"> <!--remarque: <main> suffit à Chrome pour tenir compte de la feuille de style.-->
+<main role="main">
 
 <section>
-	<h1>Erreur<?=$PAGE->getCodeErreur()?>: <?=$PAGE->getTitreErreur()?></h1>
-	<?=$PAGE->getCorpsErreur()?>
-	<?=($PAGE->getAlpha() >= 0) ? "<p>Noeud : {$PAGE->getAlpha()} - {$PAGE->getBeta()} - {$PAGE->getGamma()} M&eacute;thode:{$PAGE->getMethode()}</p>\n" : ""?>
-	<p>Si le probl&egrave;me persiste envoyez-moi un courriel en cliquant sur l&apos;ic&ocirc;ne messagerie ci-dessous.</p>
+<?=$PAGE->getSection()?>
 </section>
+
+<?=$PAGE->getNav()?>
 
 </main>
 
