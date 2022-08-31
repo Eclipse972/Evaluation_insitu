@@ -19,7 +19,7 @@ interface iPage
 	public function getDossier();	// retourne le dossier associé à la page
 
 // Assesseurs (setters)
-	public function setCSS(array $tableau);	// affiche le code pour utiliser toutes les feuilles CSS associée à la page
+	public function setCSS($feuilleCSS);	// ajoute une feuille CSS associée à la page. Répétables plusieurs fois
 	public function setTitle($titre);		// affiche le titre du document (qui est affiché dans la barre de titre du navigateur ou dans l'onglet de la page)
 	public function setHeaderText($texte);	// en-tête de la page
 	public function setSection($code);		// affiche le code du corps de la page

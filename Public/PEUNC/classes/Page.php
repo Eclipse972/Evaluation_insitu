@@ -75,20 +75,16 @@ class Page implements iPage	{
 		else throw new ApplicationException("Vue inexistante");
 	}
 
-	public function setCSS(array $Tableau)
+	public function setCSS($feuilleCSS)
 	{
-		$this->T_CSS = [];	// les classes filles devront redéfinir pour elles-mêmes la listes des CSS
-		foreach($Tableau as $feuilleCSS)
+		if(substr($feuilleCSS,0,4) == 'http')
+			$this->T_CSS[] = $feuilleCSS;	// pas de vérification sur feuille externe
+		else
 		{
-			if(substr($feuilleCSS,0,4) == 'http')
-				$this->T_CSS[] = $feuilleCSS;	// pas de vérification
-			else
-			{
-				$feuilleCSS = self::DOSSIER_CSS . $feuilleCSS . ".css";
-				if(file_exists($feuilleCSS))
-					$this->T_CSS[] = '/' . $feuilleCSS;
-				else { /* À faire: traitement en cas d'inexistence */ }
-			}
+			$feuilleCSS = self::DOSSIER_CSS . $feuilleCSS . ".css";
+			if(file_exists($feuilleCSS))
+				$this->T_CSS[] = '/' . $feuilleCSS;
+			else throw new ApplicationException($feuilleCSS . " n&apos;existe pas");
 		}
 	}
 
