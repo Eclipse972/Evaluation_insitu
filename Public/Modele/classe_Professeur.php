@@ -34,9 +34,9 @@ class Professeur extends PEUNC\User
 			.	"<p>Courriel: "		. $this->courriel	. "</p>\n";
 	}
 
-	public function AfficherClasses()
+	public function AfficherGroupes()
 	{
-		$code = "<h1>Vos classes</h1>\n";
+		$code = "<h1>Vos classes/groupes</h1>\n";
 		// génération de la liste
 		$code .= "<p>En construction ...</p>\n";
 		return $code;

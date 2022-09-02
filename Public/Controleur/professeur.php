@@ -5,7 +5,7 @@ $this->setCSS("professeur");
 //$essai = PEUNC\BDD::SELECT("pseudo_ FROM Utilisateur WHERE ID = ?", [$profID]);
 
 $this->setSection(	$Oprof->AfficherProfil()
-				.	$Oprof->AfficherClasses()
+				.	$Oprof->AfficherGroupes()
 				.	$Oprof->AfficherDevoirs()
 				.	$Oprof->AfficherCompetences()
 				.	$Oprof->AfficherEvaluations()
