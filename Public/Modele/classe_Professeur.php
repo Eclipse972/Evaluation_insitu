@@ -34,10 +34,7 @@ class Professeur extends PEUNC\User
 			.	"<p>Courriel: "		. $this->courriel	. "</p>\n";
 	}
 
-	public function AfficherGroupes()
-	{
-		return self::AfficherRubrique("Vos classes/groupes", "Prof_Groupe", "Groupe", "groupeID", $this->ID);
-	}
+	public function AfficherGroupes()		{ return self::AfficherRubrique("Vos classes/groupes", "Vue_Prof_groupes", $this->ID); }
 
 	public function AfficherCompetences()
 	{
@@ -76,13 +73,13 @@ class Professeur extends PEUNC\User
 			.	"<a href=/deconnexion>D&eacute;connexion</a>\n";
 	}
 
-	public static function AfficherRubrique($titre, $tableLienProfRubrique, $tableRubrique, $champJointure, $profID)
+	public static function AfficherRubrique($titre, $vueBD, $profID)
 	{	// factorisation de l'affichage des rubriques
 		$code = "<h1>" . $titre . "</h1>\n";
 
-		$ReponseSQL = PEUNC\BDD::SELECT("{$tableRubrique}.nom FROM {$tableLienProfRubrique} INNER JOIN {$tableRubrique} ON {$tableLienProfRubrique}.{$champJointure} = {$tableRubrique}.ID WHERE {$tableLienProfRubrique}.profID = ?", [$profID]);
+		$ReponseSQL = PEUNC\BDD::SELECT("nom FROM {$vueBD} WHERE profID = ?", [$profID]);
 
-		switch(PEUNC\BDD::SELECT("count(*) FROM {$tableLienProfRubrique} WHERE {$tableLienProfRubrique}.profID = ?", [$profID]))
+		switch(PEUNC\BDD::SELECT("count(*) FROM {$vueBD} WHERE profID = ?", [$profID]))
 		{
 			case 0:		// aucune réponse
 				$code .= "<p>Vous n&apos;avez aucun groupe/classe</p>\n";
