@@ -63,7 +63,8 @@ class Professeur extends PEUNC\User
 		return $code;
 	}
 
-	// méthodes statiques
+	// Méthodes statiques =========================================================================
+
 	public static function AfficherMenu()
 	{
 		return	"<a href=/professeur/modifier>Modifier profil</a>\n"
@@ -75,13 +76,13 @@ class Professeur extends PEUNC\User
 			.	"<a href=/deconnexion>D&eacute;connexion</a>\n";
 	}
 
-	public static function AfficherRubrique($titre, $table, $tableJointe, $champJointure, $profID)
+	public static function AfficherRubrique($titre, $tableLienProfRubrique, $tableRubrique, $champJointure, $profID)
 	{	// factorisation de l'affichage des rubriques
 		$code = "<h1>" . $titre . "</h1>\n";
 
-		$ReponseSQL = PEUNC\BDD::SELECT("{$tableJointe}.nom FROM {$table} INNER JOIN {$tableJointe} ON {$table}.{$champJointure} = {$tableJointe}.ID WHERE {$table}.profID = ?", [$profID]);
+		$ReponseSQL = PEUNC\BDD::SELECT("{$tableRubrique}.nom FROM {$tableLienProfRubrique} INNER JOIN {$tableRubrique} ON {$tableLienProfRubrique}.{$champJointure} = {$tableRubrique}.ID WHERE {$tableLienProfRubrique}.profID = ?", [$profID]);
 
-		switch(PEUNC\BDD::SELECT("count(*) FROM {$table} WHERE {$table}.profID = ?", [$profID]))
+		switch(PEUNC\BDD::SELECT("count(*) FROM {$tableLienProfRubrique} WHERE {$tableLienProfRubrique}.profID = ?", [$profID]))
 		{
 			case 0:		// aucune réponse
 				$code .= "<p>Vous n&apos;avez aucun groupe/classe</p>\n";
