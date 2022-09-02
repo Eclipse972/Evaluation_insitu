@@ -88,6 +88,7 @@ class Professeur extends PEUNC\User
 		return $code;
 	}
 
+	// méthode statiques
 	public static function AfficherMenu()
 	{
 		return	"<a href=/professeur/modifier>Modifier profil</a>\n"
@@ -97,5 +98,27 @@ class Professeur extends PEUNC\User
 			.	"<a href=#>&Eacute;valuer</a>\n"
 			.	"<a href=#>Synth&egrave;ses</a>\n"
 			.	"<a href=/deconnexion>D&eacute;connexion</a>\n";
+	}
+
+	public static function AfficherRubrique($titre, $table, $tableJointe, $champJointure, $profID)
+	{	// factorisation de l'affichage des rubriques
+		$code = "<h1>" . $titre . "</h1>\n";
+
+		$ReponseSQL = PEUNC\BDD::SELECT("{$tableJointe}.nom FROM {$table} INNER JOIN {$tableJointe} ON {$table}.{$champJointure} = {$tableJointe}.ID WHERE {$table}.profID = ?", [$profID]);
+
+		switch(PEUNC\BDD::SELECT("count(*) FROM {$table} WHERE {$table}.profID = ?", [$profID]))
+		{
+			case 0:		// aucune réponse
+				$code .= "<p>Vous n&apos;avez aucun groupe/classe</p>\n";
+				break;
+			case 1:		// réponse unique
+				$code .= "<p>" . $ReponseSQL . "</p>\n";
+				break;
+			default:	// construction de la liste
+				$code .= "<ul>\n";
+				foreach($ReponseSQL as $valeur)	$code .= "<li>{$valeur["nom"]}</li>\n";
+				$code .= "</ul>\n";
+		}
+		return $code . "\n";
 	}
 }
