@@ -36,32 +36,7 @@ class Professeur extends PEUNC\User
 
 	public function AfficherGroupes()
 	{
-		$code = "<h1>Vos classes/groupes</h1>\n";
-		// génération de la liste
-		switch(PEUNC\BDD::SELECT("count(*) FROM Prof_Groupe WHERE Prof_Groupe.profID = ?", [ $this->ID]))
-		{
-			case 0:		// aucune réponse
-				$code .= "<p>Vous n&apos;avez aucun groupe/classe</p>\n";
-				break;
-			case 1:		// réponse unique
-				$valeur = PEUNC\BDD::SELECT("Groupe.nom
-										FROM Prof_Groupe
-										INNER JOIN Groupe ON Prof_Groupe.groupeID = Groupe.ID
-										WHERE Prof_Groupe.profID = ?",
-										[ $this->ID]);
-				$code .= "<p>" . $valeur . "</p>\n";
-				break;
-			default:	// construction de la liste
-				$code .= "<ul>\n";
-				$Treponse = PEUNC\BDD::SELECT("Groupe.nom
-										FROM Prof_Groupe
-										INNER JOIN Groupe ON Prof_Groupe.groupeID = Groupe.ID
-										WHERE Prof_Groupe.profID = ?",
-										[ $this->ID]);
-				foreach($Treponse as $valeur)	$code .= "<li>" . $valeur["nom"] . "</li>\n";
-				$code .= "</ul>\n";			
-		}
-		return $code . "\n";
+		return self::AfficherRubrique("Vos classes/groupes", "Prof_Groupe", "Groupe", "groupeID", $this->ID);
 	}
 
 	public function AfficherCompetences()
@@ -88,7 +63,7 @@ class Professeur extends PEUNC\User
 		return $code;
 	}
 
-	// méthode statiques
+	// méthodes statiques
 	public static function AfficherMenu()
 	{
 		return	"<a href=/professeur/modifier>Modifier profil</a>\n"
