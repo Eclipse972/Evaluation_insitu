@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: evaluation.insitu.sql.free.fr
--- Généré le : Mar 30 Août 2022 à 00:01
+-- Généré le : Sam 03 Septembre 2022 à 19:26
 -- Version du serveur: 5.0.83
 -- Version de PHP: 5.3.9
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `Squelette` (
   `paramAutorise` varchar(99) collate latin1_general_ci NOT NULL default '[]' COMMENT 'syntaxe JSON',
   PRIMARY KEY  (`ID`),
   UNIQUE KEY `navigation` (`alpha`,`beta`,`gamma`,`methode`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=14 ;
 
 --
 -- Contenu de la table `Squelette`
@@ -53,7 +53,8 @@ INSERT INTO `Squelette` (`ID`, `alpha`, `beta`, `gamma`, `texteMenu`, `imageMenu
 (9, 2, 1, 0, 'Aide professeur', '', 'aide', 'Page', 'aideProf.php', 'GET', '[]'),
 (10, 3, 0, 0, 'Mode d&eacute;monstration', '', 'demonstration', 'Page', 'demo.php', 'GET', '[]'),
 (11, 2, 2, 0, 'Modifier Profil', '', 'modifier', 'Page', 'modifierProfil.php', 'GET', '[]'),
-(12, 4, 0, 0, 'D&eacute;connexion', '', 'deconnexion', 'Page', 'deconnecter.php', 'GET', '[]');
+(12, 4, 0, 0, 'D&eacute;connexion', '', 'deconnexion', 'Page', 'deconnecter.php', 'GET', '[]'),
+(13, 5, 0, 0, 'Vos groupes/classes', '', 'classes', 'Page', 'classes.php', 'GET', '[]');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
