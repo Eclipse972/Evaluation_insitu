@@ -52,13 +52,7 @@ class Professeur extends PEUNC\User
 		return $code;
 	}
 
-	public function AfficherDevoirs()
-	{
-		$code = "<h1>Vos devoirs</h1>\n";
-		// génération de la liste
-		$code .= "<p>En construction ...</p>\n";
-		return $code;
-	}
+	public function AfficherDevoirs()		{ return self::AfficherRubrique("Vos devoirs", "Vue_Prof_devoirs", $this->ID); }
 
 	// Méthodes statiques =========================================================================
 
