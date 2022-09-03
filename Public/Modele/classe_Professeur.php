@@ -45,7 +45,7 @@ class Professeur extends PEUNC\User
 	public static function AfficherMenu()
 	{
 		return	"<a href=/professeur/modifier>Modifier profil</a>\n"
-			.	"<a href=#>Classes</a>\n"
+			.	"<a href=/classes>Classes</a>\n"
 			.	"<a href=#>Devoirs</a>\n"
 			.	"<a href=#>R&eacute;f&eacute;rentiels</a>\n"
 			.	"<a href=#>&Eacute;valuer</a>\n"
