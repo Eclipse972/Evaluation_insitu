@@ -36,7 +36,7 @@ class Professeur extends PEUNC\User
 
 	public function AfficherGroupes()		{ return self::AfficherRubrique("Vos classes/groupes", "Vue_Prof_groupes", $this->ID); }
 
-	public function AfficherCompetences()
+	public function AfficherReferentiels()
 	{
 		$code = "<h1>Vos comp&eacute;tences</h1>\n";
 		// génération de la liste

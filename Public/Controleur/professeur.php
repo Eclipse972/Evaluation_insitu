@@ -6,7 +6,7 @@ $this->setCSS("professeur");
 $this->setSection(	$Oprof->AfficherProfil()
 				.	$Oprof->AfficherGroupes()
 				.	$Oprof->AfficherDevoirs()
-				.	$Oprof->AfficherCompetences()
+				.	$Oprof->AfficherReferentiels()
 				.	$Oprof->AfficherEvaluations()
 			);
 
