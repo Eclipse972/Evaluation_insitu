@@ -65,7 +65,7 @@ class Professeur extends PEUNC\User
 				$code .= "<p>Vous n&apos;avez aucun groupe/classe</p>\n";
 				break;
 			case 1:		// réponse unique
-				$code .= "<p>" . $ReponseSQL . "</p>\n";
+				$code .= "<p>{$ReponseSQL}</p>\n";
 				break;
 			default:	// construction de la liste
 				$code .= "<ul>\n";
