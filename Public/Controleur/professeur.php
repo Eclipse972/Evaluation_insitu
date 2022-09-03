@@ -7,7 +7,6 @@ $this->setSection(	$Oprof->AfficherProfil()
 				.	$Oprof->AfficherGroupes()
 				.	$Oprof->AfficherDevoirs()
 				.	$Oprof->AfficherReferentiels()
-				.	$Oprof->AfficherEvaluations()
 			);
 
 $this->setNav(Professeur::AfficherMenu());

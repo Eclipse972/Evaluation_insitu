@@ -38,14 +38,6 @@ class Professeur extends PEUNC\User
 
 	public function AfficherReferentiels()	{ return self::AfficherRubrique("Vos r&eacute;f&eacute;rentiels", "Vue_Prof_referentiels", $this->ID); }
 
-	public function AfficherEvaluations()
-	{
-		$code = "<h1>Vos &eacute;valuations</h1>\n";
-		// génération de la liste
-		$code .= "<p>En construction ...</p>\n";
-		return $code;
-	}
-
 	public function AfficherDevoirs()		{ return self::AfficherRubrique("Vos devoirs", "Vue_Prof_devoirs", $this->ID); }
 
 	// Méthodes statiques =========================================================================
@@ -55,7 +47,7 @@ class Professeur extends PEUNC\User
 		return	"<a href=/professeur/modifier>Modifier profil</a>\n"
 			.	"<a href=#>Classes</a>\n"
 			.	"<a href=#>Devoirs</a>\n"
-			.	"<a href=#>Comp&eacute;tences</a>\n"
+			.	"<a href=#>R&eacute;f&eacute;rentiels</a>\n"
 			.	"<a href=#>&Eacute;valuer</a>\n"
 			.	"<a href=#>Synth&egrave;ses</a>\n"
 			.	"<a href=/deconnexion>D&eacute;connexion</a>\n";
