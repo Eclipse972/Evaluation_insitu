@@ -31,7 +31,7 @@ class Professeur extends PEUNC\User
 			.	"<p>Pseudo: "		. $this->pseudo		. "</p>\n"
 			.	"<p>Nom: " 			. $this->nom		. "</p>\n"
 			.	"<p>Pr&eacute;nom: ". $this->prenom		. "</p>\n"
-			.	"<p>Courriel: "		. $this->courriel	. "</p>\n";
+			.	"<p>Courriel: "		. $this->courriel	. "</p>\n\n";
 	}
 
 	public function AfficherGroupes()		{ return self::AfficherRubrique("Vos classes/groupes", "Vue_Prof_groupes", $this->ID); }
