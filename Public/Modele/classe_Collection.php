@@ -1,5 +1,13 @@
 <?php
 class Collection
+/* Un professeur a plusieurs relations 1-n avec d'autres entités:
+ * groupes
+ * compétences
+ * évaluations
+ * ...
+ * Pour chacune de ces entités, il va falloir fournir une liste de liens qui prendra toujours
+ * la même forme.
+ * */
 {
 	public function __construct()	{}
 
