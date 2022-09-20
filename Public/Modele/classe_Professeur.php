@@ -47,7 +47,7 @@ class Professeur extends PEUNC\User
 		return	"<a href=/professeur/modifier>Modifier profil</a>\n"
 			.	"<a href=/classes>Classes</a>\n"
 			.	"<a href=/devoirs>Devoirs</a>\n"
-			.	"<a href=#>R&eacute;f&eacute;rentiels</a>\n"
+			.	"<a href=/referentiels>R&eacute;f&eacute;rentiels</a>\n"
 			.	"<a href=#>&Eacute;valuer</a>\n"
 			.	"<a href=#>Synth&egrave;ses</a>\n"
 			.	"<a href=/deconnexion>D&eacute;connexion</a>\n";
