@@ -2,8 +2,6 @@
 
 $profID = isset($_SESSION["profID"]) ? $_SESSION["profID"] : 1;
 
-$code = Collection::Liste("Vue_Prof_groupes", $profID);
-
 // construction de la page
 $this->setSection("<h1>Choisissez ...</h1>\n<p><a href=/professeur>ou revenir en arri&egrave;re</a></p>\n");
 
