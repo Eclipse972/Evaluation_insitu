@@ -21,7 +21,7 @@ abstract class Formulaire extends Page
 		}
 		else
 		{
-			throw new \Exception("Méthode inatendue pour un formulaire");
+			throw new ApplicationException("Méthode inatendue pour un formulaire");
 		}
 	}
 
