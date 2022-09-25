@@ -2,7 +2,7 @@
 
 namespace PEUNC;
 
-abstract class Formulaire extends Page
+/*abstract*/ class Formulaire extends Page
 {
 	protected $jetonJSON;	// contient la configuration en clair sous la forme d'un objet JSON
 
@@ -11,7 +11,7 @@ abstract class Formulaire extends Page
 		parent::__construct($alpha, $beta, $gamma, $methode, $Tparam);
 		if ($methode == "GET")
 		{	// création du jeton qui sauvegarde l'état lors de la création du formulaire
-			$this->jetonJSON = '{"alpha":' . $alpha . ', "beta":' . $beta . ', "gamma":' . $gamma	// position dans l'arborescence
+			$this->jetonJSON = '{"noeud":[' . $alpha . ',' . $beta . ',' . $gamma . ']'// position dans l'arborescence
 							. ', "depart":' . time()	// date de création du jeton
 							. ', "URLretour":"' .  $this->URLprecedente() . '"}';
 		}
@@ -27,11 +27,11 @@ abstract class Formulaire extends Page
 
 // Fonctions pour le jeton ====================================================================
 
-	public function CreerJeton()	// renvoie le jeton chffré à insérer dans le formulaire
+	public function InsererJeton()
 	{
 		require"config_chiffrement.php";	// défini $cipher, $key et $iv
 		$jetonchiffré = openssl_encrypt($this->jetonJSON, $cipher, $key, $options=0, $iv);
-		return $jetonchiffré;
+		return "<input name=\"CSRF\" type=\"hidden\" value=\"" . $jetonchiffré . "\">\n";
 	}
 
 	public function AjouterVariableAuJeton($nom, $valeurJSON)
@@ -50,14 +50,14 @@ abstract class Formulaire extends Page
 
 // Fonctions abstraites =======================================================================
 
-	abstract public function TraiterSpam();	// par exemple ajouter une entrée dans un journal
+/*	abstract public function TraiterSpam();	// par exemple ajouter une entrée dans un journal
 
 	abstract public function FormulaireOK();// la liste des champs est correcte et ils ont la forme attendue
 
 	abstract public function Traitement();	// traitement si tout est OK. Par exemple envoyer un courriel, modifier une BD
 
 	abstract public function TraitementAvantRepresentation();	// prépare le formulaire pour un réaffichage en  générant des messages d'erreur par exemple'
-
+*/
 //	zone de test ==============================================================================
 
 }
