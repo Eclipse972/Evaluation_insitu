@@ -41,7 +41,7 @@ class ReponsePOST extends ReponseClient
 			require"config_chiffrement.php";	// défini $cipher, $key et $iv
 			$jetonJSON = openssl_decrypt($jetonChiffré, $cipher, $key, $options=0, $iv);
 			
-			$O_jeton = json_decode($fichier);
+			$O_jeton = json_decode($jetonJSON);
 			if (!isset($O_jeton))
 				throw new ApplicationException("Jeton CSRF corrompu");
 			elseif (time() - $O_jeton->depart < 5)
