@@ -96,7 +96,15 @@ class HttpRouter
 				return [0, 0, 0];	// un appel ordinaire vers la page d'accueil
 				break;
 			case"POST":
-				return Formulaire::DonnerPosition();
+				if (!isset($_POST["CSRF"]))	// si le fomulaire ne contient pas de jeton CSRF
+					throw new ApplicationException("Jeton CSRF inexistant");
+
+				$jeton = Formulaire::DecoderJeton($_POST["CSRF"]);
+
+				if ((!isset($jeton->alpha)) || (!isset($jeton->beta)) || (!isset($jeton->gamma)))	// si le jeton est invalide
+					throw new ApplicationExceotion("Jeton CSRF invalide");
+				
+				return [$jeton->alpha, $jeton->beta, $jeton->gamma];
 				break;
 			default:
 				throw new ServeurException(405);// erreur 405!
