@@ -11,9 +11,8 @@ namespace PEUNC;
 		parent::__construct($alpha, $beta, $gamma, $methode, $Tparam);
 		if ($methode == "GET")
 		{	// création du jeton qui sauvegarde l'état lors de la création du formulaire
-			$this->jetonJSON = '{"noeud":[' . $alpha . ',' . $beta . ',' . $gamma . ']'// position dans l'arborescence
-							. ', "depart":' . time()	// date de création du jeton
-							. ', "URLretour":"' .  $this->URLprecedente() . '"}';
+			$this->jetonJSON = '{"depart":' . time()	// permet d'avoir une jeton qui change à chaque fois.
+							. ', "noeud":[' . $alpha . ',' . $beta . ',' . $gamma . ']}';	// position dans l'arborescence
 		}
 		elseif ($methode == "POST")
 		{
