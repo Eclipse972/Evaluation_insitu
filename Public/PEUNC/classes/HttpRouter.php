@@ -14,7 +14,6 @@ class HttpRouter
  * (X;Y;Z) avec Z>0 => page de 3e niveau
  *
  * si alpha < 0 => page spéciales PEUNC ou autre
- * (-1;code;0) -> page d'erreur avec son code que ce soit un erreur serveur ou une erreur interne à l'application
  * (-2;0;0) -> formulaire de contact. Mais ce n'est pas une obligation
  *
  * Les pages d'erreur serveur gérées sont: 404, 403, 405 et 500 mais on peut en rajouter facilement d'autres.
@@ -25,7 +24,6 @@ class HttpRouter
 	private $alpha;
 	private $beta;
 	private $gamma;
-	private $ID;		// ID du noeud
 	private $methode;	// méthode Http
 
 	// pour le futur
@@ -48,13 +46,9 @@ class HttpRouter
 				list($this->alpha, $this->beta, $this->gamma) = HttpRouter::Redirection404();
 				break;
 			default:
-				//list($this->alpha, $this->beta, $this->gamma) = [-1, 0, 0];	// erreur inconnue
 				throw new ApplicationException("erreur inconnue");
 		}
 
-		// recherche de l'ID du noeud
-		$this->ID = BDD::SELECT("ID FROM Vue_Routes WHERE niveau1 = ? AND niveau2 = ? AND niveau3 = ? AND methodeHttp = ?",
-														[$this->alpha, $this->beta, $this->gamma, $_SERVER['REQUEST_METHOD']]);
 		$this->methode = $_SERVER['REQUEST_METHOD'];
 	}
 
@@ -86,8 +80,8 @@ class HttpRouter
 
 	private static function SansRedirection()
 	/* Un appel direct de index.php.
-	 * La pseudo réécriture d'URL ne fonctionne pas avec le script action du formulaire. J'ai le parti de repasser par index.php pour traiter
-	 * tous les formulaires. Chaque formulaire doit sauvegarder sa position dans la session pour être retrouvé.
+	 * La pseudo réécriture d'URL ne fonctionne pas avec le script action de formulaire.
+	 * J'ai choisi de repasser par index.php pour traiter tous les formulaires.
 	 * */
 	{
 		switch($_SERVER['REQUEST_METHOD'])
@@ -95,7 +89,7 @@ class HttpRouter
 			case"GET":
 				return [0, 0, 0];	// un appel ordinaire vers la page d'accueil
 				break;
-			case"POST":
+			case"POST":	// le jeton CSRF contient des infos sur le formuaire notemment sa position dans l'arborescence
 				if (!isset($_POST["CSRF"]))	// si le fomulaire ne contient pas de jeton CSRF
 					throw new ApplicationException("Jeton CSRF inexistant");
 
@@ -104,7 +98,7 @@ class HttpRouter
 				if ((!isset($jeton->alpha)) || (!isset($jeton->beta)) || (!isset($jeton->gamma)))	// si le jeton est invalide
 					throw new ApplicationExceotion("Jeton CSRF invalide");
 				
-				return [$jeton->alpha, $jeton->beta, $jeton->gamma];
+				return [$jeton->alpha, $jeton->beta, $jeton->gamma];	// renvoie la positio du formulaire
 				break;
 			default:
 				throw new ServeurException(405);// erreur 405!
@@ -113,7 +107,6 @@ class HttpRouter
 
 //	Accesseurs ================================================================================================================================
 
-	public function getID()		{ return $this->ID; }
 	public function getAlpha()	{ return $this->alpha; }
 	public function getBeta()	{ return $this->beta; }
 	public function getGamma()	{ return $this->gamma; }
