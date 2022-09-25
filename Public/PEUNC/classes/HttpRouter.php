@@ -95,10 +95,10 @@ class HttpRouter
 
 				$jeton = Formulaire::DecoderJeton($_POST["CSRF"]);
 
-				if ((!isset($jeton->alpha)) || (!isset($jeton->beta)) || (!isset($jeton->gamma)))	// si le jeton est invalide
+				if (!isset($jeton->noeud))	// si le jeton est invalide
 					throw new ApplicationExceotion("Jeton CSRF invalide");
 				
-				return [$jeton->alpha, $jeton->beta, $jeton->gamma];	// renvoie la positio du formulaire
+				return $jeton->noeud;	// renvoie la position du formulaire
 				break;
 			default:
 				throw new ServeurException(405);// erreur 405!
