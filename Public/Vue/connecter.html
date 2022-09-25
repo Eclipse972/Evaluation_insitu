@@ -10,16 +10,17 @@
 <?php include"Vue/commun/balise_header.html"; ?>
 </header>
 
-<main role="main"> <!--remarque: <main> suffit à Chrome pour tenir compte de la feuille de style.-->
-	<section>
-		<form method=post action=/ >
-			<p>Utilisateur</p>
-			<input type="text"		name="utilisateur" 	value="" />
-			<p>Mot de passe</p>
-			<input type="password"	name="MDP"			value="" />
-		</form>
-		<a href="/professeur">CONNEXION</a>
-	</section>
+<main role="main">
+<section>
+	<form method=post action=/ >
+		<p>Utilisateur</p>
+		<input type="text"		name="utilisateur" 	value="" />
+		<p>Mot de passe</p>
+		<input type="password"	name="MDP"			value="" />
+		<?=$PAGE->InsererJeton()?>
+		<p><input type="submit" value="CONNEXION" style="width:100px;" /></p>
+	</form>
+</section>
 </main>
 
 <footer>
