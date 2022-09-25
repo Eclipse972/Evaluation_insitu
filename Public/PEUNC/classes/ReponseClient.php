@@ -21,12 +21,17 @@ class ReponseClient
 	public function PrepareParametres($Tableau)
 	/* Dans la table Squelette on récupère la liste des paramètres autorisés.
 	 * On construit un nouveau tableau qui ne contient que les clés autorisées et chaque valeur subit un nettoyage.
+	 * Par contre des paramètres manquant ne provoquent pas d'erreur.
+	 * Une requete GET ne nécessitte pas forcément tous les paramètres
+	 * Un paramètre manquant sur une requête POST doit provoquer une erreur.
+	 * C'est l'objet qui crée la réponse qui doit décider
 	 *
 	 * Retour: un tableau débarasssé des clés non autorisées avec ses valeurs nettoyées.
 	 * */
 	{
 		// récupère la liste des paramètres autorisés
-		$reponseBD = BDD::SELECT("paramAutorise FROM Vue_Routes WHERE ID = ?", [$this->route->getID()]);
+		$reponseBD = BDD::SELECT("paramAutorise FROM Squelette WHERE alpha= ? AND beta= ? AND gamma= ? AND methode = ?",
+								[$this->route->getAlpha(), $this->route->getBeta(), $this->route->getGamma(), $this->route->getMethode()]);
 
 		$TparamAutorises = json_decode($reponseBD, true);
 
