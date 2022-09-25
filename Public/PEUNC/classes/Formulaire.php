@@ -5,15 +5,15 @@ namespace PEUNC;
 abstract class Formulaire extends Page
 {
 	protected $jetonJSON;	// contient la configuration en clair sous la forme d'un objet JSON
-	protected $O_jetonXSRF;	// objet transmis par le jeton XSRF
 
 	public function __construct($alpha, $beta, $gamma, $methode, array $Tparam = [])
 	{
 		parent::__construct($alpha, $beta, $gamma, $methode, $Tparam);
 		if ($methode == "GET")
-		{
-			$ID = BDD::SELECT("ID FROM Squelette WHERE alpha=? AND beta=? AND gamma=? AND methode = 'POST'",[$alpha, $beta, $gamma]);// recherche du noeud qui traite le formulaire
-			$this->jetonJSON = '{"ID":' . $ID .', "depart":' . time() . ', "URLretour":"' .  $this->URLprecedente() . '"}';
+		{	// création du jeton qui sauvegarde l'état lors de la création du formulaire
+			$this->jetonJSON = '{"alpha":' . $alpha . ', "beta":' . $beta . ', "gamma":' . $gamma	// position dans l'arborescence
+							. ', "depart":' . time()	// date de création du jeton
+							. ', "URLretour":"' .  $this->URLprecedente() . '"}';
 		}
 		elseif ($methode == "POST")
 		{
@@ -27,7 +27,7 @@ abstract class Formulaire extends Page
 
 // Fonctions pour le jeton ====================================================================
 
-	public function InsérerJeton()	// insère le champ caché jeton dans le formulaire
+	public function CreerJeton()	// renvoie le jeton chffré à insérer dans le formulaire
 	{
 		require"config_chiffrement.php";	// défini $cipher, $key et $iv
 		$jetonchiffré = openssl_encrypt($this->jetonJSON, $cipher, $key, $options=0, $iv);
@@ -40,7 +40,7 @@ abstract class Formulaire extends Page
 		$this->jetonJSON = str_replace("}{", ", ", $this->jetonJSON);	// fusionne les deux objets
 	}
 
-	public function LireJeton($jetonChiffré)
+	public static function DecoderJeton($jetonChiffré)
 	{
 		require"config_chiffrement.php";	// défini $cipher, $key et $iv
 		$jeton = openssl_decrypt($jetonChiffré, $cipher, $key, $options=0, $iv);// dechiffrement jeton
