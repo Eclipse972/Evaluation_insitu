@@ -37,7 +37,7 @@ class HttpRouter
 			case 403:	// accès interdit
 			case 405:	// méthode http non permise
 			case 500:	// erreur serveur
-				throw new PEUNC\ServeurException($_SERVER['REDIRECT_STATUS']);
+				throw new ServeurException($_SERVER['REDIRECT_STATUS']);
 				break;
 			case 200:	// le script est lancé sans redirection
 				list($this->alpha, $this->beta, $this->gamma) = HttpRouter::SansRedirection();
