@@ -35,17 +35,18 @@ class ReponsePOST extends ReponseClient
 	{
 		$this->TlisteReponses = $this->PrepareParametres($_POST);
 
-		if (isset($this->TlisteReponses["XSRF"]))
+		if (isset($this->TlisteReponses["CSRF"]))
 		{
-			$jetonChiffré = $this->TlisteReponses["XSRF"];
+			$jetonChiffré = $this->TlisteReponses["CSRF"];
 			require"config_chiffrement.php";	// défini $cipher, $key et $iv
 			$jetonJSON = openssl_decrypt($jetonChiffré, $cipher, $key, $options=0, $iv);
+			
 			$O_jeton = json_decode($fichier);
 			if (!isset($O_jeton))
-				throw new ApplicationException("Jeton XSRF corrompu");
+				throw new ApplicationException("Jeton CSRF corrompu");
 			elseif (time() - $O_jeton->depart < 5)
 				throw new ApplicationException("temps de r&eacute;ponse inhumain");
 		}
-		else throw new ApplicationException("Jeton XSRF absent");
+		else throw new ApplicationException("Jeton CSRF absent");
 	}
 }
