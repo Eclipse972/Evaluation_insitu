@@ -29,7 +29,7 @@ namespace PEUNC;
 	public function InsererJeton()
 	{
 		require"config_chiffrement.php";	// défini $cipher, $key et $iv
-		$jetonchiffré = openssl_encrypt($this->jetonJSON, $cipher, $key, $options=0, $iv);
+		$jetonchiffré = openssl_encrypt($this->jetonJSON, $cipher, $key, 0, $iv);
 		return "<input name=\"CSRF\" type=\"hidden\" value=\"" . $jetonchiffré . "\">\n";
 	}
 
@@ -42,7 +42,7 @@ namespace PEUNC;
 	public static function DecoderJeton($jetonChiffré)
 	{
 		require"config_chiffrement.php";	// défini $cipher, $key et $iv
-		$jeton = openssl_decrypt($jetonChiffré, $cipher, $key, $options=0, $iv);// dechiffrement jeton
+		$jeton = openssl_decrypt($jetonChiffré, $cipher, $key, 0, $iv);// dechiffrement jeton
 		$O_jeton = json_decode($jeton);		// si erreur renvoyer null sinon renvoyer l'objet
 		return $O_jeton;
 	}
