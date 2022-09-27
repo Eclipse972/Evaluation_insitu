@@ -9,9 +9,9 @@ class Page extends PEUNC\Page
 	protected $eleveID;
 	protected $devoirID;
 
-	public function __construct($alpha, $beta, $gamma, $methode, array $TparamURL = [])
+	public function __construct(PEUNC\HttpRoute $route, array $TparamURL = [])
 	{
-		parent::__construct($alpha, $beta, $gamma, $methode, $TparamURL);
+		parent::__construct($route, $TparamURL);
 		$this->profID	= (isset($_SESSION["profID"]))	? $_SESSION["profID"]	: 1;	// 1 -> mode démo
 		$this->classeID	= (isset($_SESSION["classeID"]))? $_SESSION["classeID"]	: null;
 		$this->eleveID	= (isset($_SESSION["eleveID"]))	? $_SESSION["eleveID"]	: null;

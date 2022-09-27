@@ -8,7 +8,7 @@ namespace PEUNC;
 
 	public function __construct(HttpRoute $route, array $TparamURL = [])
 	{
-		parent::__construct($route, $Tparam);
+		parent::__construct($route, $TparamURL);
 		switch($route->getMethode())
 		{
 			case "GET":

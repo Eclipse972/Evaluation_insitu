@@ -19,9 +19,8 @@ class ReponseClient
 		$Tparam = self::PrepareParametres($route);
 					
 		// création de la page
-		$PAGE = new $classePage($route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode(),
-								$Tparam);
-		$PAGE->ExecuteControleur();
+		$PAGE = new $classePage($route, $Tparam);
+		$PAGE->ExecuteControleur($route);
 
 		// post-traitement
 		if ($route->getMethode()=="GET")	include $PAGE->getView(); // insertion de la vue

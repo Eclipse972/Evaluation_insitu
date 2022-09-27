@@ -24,7 +24,7 @@ try
 }
 catch(PEUNC\ServeurException $e)
 {
-	$PAGE = new PEUNC\Page(0,0,0,"GET");	// il n'y a pas de route
+	$PAGE = new PEUNC\Page();	// il n'y a pas de route
 	$PAGE->setHeaderText("<p>Erreur serveur</p>");
 	$PAGE->SetSection("<h1>" . $e->getMessage() . " - code: " . $e->getCode() . "</h1>\n"
 					. "<p>Image &agrave; venir</p>\n"
@@ -35,7 +35,7 @@ catch(PEUNC\ServeurException $e)
 }
 catch(PDOException $e)
 {
-	$PAGE = new PEUNC\Page($route->getAlpha(),$route->getBeta(),$route->getGamma(),$route->getMethode());
+	$PAGE = new PEUNC\Page($route);
 	$PAGE->setHeaderText("<p>Erreur de base de donn&eacute;es</p>");
 	$PAGE->SetSection("<h1>" . $e->getMessage() . "</h1>\n");
 	$PAGE->setView("erreur.html");
@@ -43,17 +43,17 @@ catch(PDOException $e)
 }
 catch(PEUNC\ApplicationException $e)
 {
-	$PAGE = new PEUNC\Page($route->getAlpha(),$route->getBeta(),$route->getGamma(),$route->getMethode());
+	$PAGE = new PEUNC\Page($route);
 	$PAGE->setHeaderText("<p>Erreur de l'application</p>");
 	$PAGE->SetSection("<h1>" . $e->getMessage() . "</h1>\n"
-					. "<p>Noeud : " . $PAGE->getAlpha() . " - " . $PAGE->getAlpha() . " - " . $PAGE->getGamma()
-					. " M&eacute;thode:" . $PAGE->getMethode() . "</p>\n");
+					. "<p>Noeud : " . $route->getAlpha() . " - " . $route->getAlpha() . " - " . $route->getGamma()
+					. " M&eacute;thode:" . $route->getMethode() . "</p>\n");
 	$PAGE->setView("erreur.html");
 	include $PAGE->getView();
 }
 catch(Exception $e)
 {
-	$PAGE = new PEUNC\Page($route->getAlpha(),$route->getBeta(),$route->getGamma(),$route->getMethode());
+	$PAGE = new PEUNC\Page($route);
 	$PAGE->setHeaderText("<p>Erreur inconnue</p>");
 	$PAGE->SetSection("<h1>" . $e->getMessage() . "</h1>\n"
 					. "<p>Noeud : " . $PAGE->getAlpha() . " - " . $PAGE->getAlpha() . " - " . $PAGE->getGamma()

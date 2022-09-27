@@ -8,7 +8,7 @@ class Contact extends Formulaire
 {
 	public function __construct(HttpRoute $route, array $TparamURL = [])
 	{
-		parent::__construct($route, $Tparam);
+		parent::__construct($route, $TparamURL);
 		$this->setView("formulaire.html");
 	}
 /*
