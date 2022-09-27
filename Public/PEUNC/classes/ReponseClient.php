@@ -14,9 +14,10 @@ class ReponseClient
 		$this->route = $route;
 		$classePage = BDD::SELECT("classePage FROM Squelette WHERE alpha= ? AND beta= ? AND gamma= ? AND methode = ?",
 								[$route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode()]);
-		if (isset($classePage))
-			$this->classePage = $classePage;
-		else throw new ApplicationException("La classe de page n&apos;est pas d&eacute;finie dans le squelette.");
+		if (!isset($classePage))
+			throw new ApplicationException("La classe de page n&apos;est pas d&eacute;finie dans le squelette.");
+
+		$this->classePage = $classePage;
 	}
 
 	public function PrepareParametres($Tableau)
