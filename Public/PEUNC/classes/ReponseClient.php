@@ -10,33 +10,24 @@ class ReponseClient
 	
 	public function __construct(HttpRouter $route)
 	{
-		$this->route = $route;
 		$classePage = BDD::SELECT("classePage FROM Squelette WHERE alpha= ? AND beta= ? AND gamma= ? AND methode = ?",
 								[$route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode()]);
 		if (!isset($classePage))
 			throw new ApplicationException("La classe de page n&apos;est pas d&eacute;finie dans le squelette.");
 
-		switch($route->getMethode())
-		{
-			case "GET":
-				$PAGE = new $classePage($route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode(),
-										$this->PrepareParametres($_GET)
-									);
-				$PAGE->ExecuteControleur();
-				include $PAGE->getView(); // insertion de la vue
-				break;
-			case "POST":
-				$PAGE = new $classePage($route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode(),
-										$this->PrepareParametres($_POST)
-									);
-				$PAGE->ExecuteControleur();
-				break;
-			default:
-				throw new ApplicationException("M&eacute;thode http inconnue");
-		}
+		// pré-traitement
+		$Tparam = self::PrepareParametres($route);
+					
+		// création de la page
+		$PAGE = new $classePage($route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode(),
+								$Tparam);
+		$PAGE->ExecuteControleur();
+
+		// post-traitement
+		if ($route->getMethode()=="GET")	include $PAGE->getView(); // insertion de la vue
 	}
 
-	public function PrepareParametres($Tableau)
+	public static function PrepareParametres(HttpRouter $route)
 	/* Dans la table Squelette on récupère la liste des paramètres autorisés.
 	 * On construit un nouveau tableau qui ne contient que les clés autorisées et chaque valeur subit un nettoyage.
 	 * Par contre des paramètres manquant ne provoquent pas d'erreur.
@@ -47,9 +38,21 @@ class ReponseClient
 	 * Retour: un tableau débarasssé des clés non autorisées avec ses valeurs nettoyées.
 	 * */
 	{
+		switch($route->getMethode())
+		{
+			case "GET":
+				$Tableau = $_GET;
+				break;
+			case "POST":
+				$Tableau = $_POST;
+				break;
+			default:
+				throw new ApplicationException("M&eacute;thode http inconnue");
+		}
+
 		// récupère la liste des paramètres autorisés
 		$reponseBD = BDD::SELECT("paramAutorise FROM Squelette WHERE alpha= ? AND beta= ? AND gamma= ? AND methode = ?",
-								[$this->route->getAlpha(), $this->route->getBeta(), $this->route->getGamma(), $this->route->getMethode()]);
+								[$route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode()]);
 
 		$TparamAutorises = json_decode($reponseBD, true);
 
