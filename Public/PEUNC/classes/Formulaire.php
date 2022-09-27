@@ -6,21 +6,20 @@ namespace PEUNC;
 {
 	protected $jetonJSON;	// contient la configuration en clair sous la forme d'un objet JSON
 
-	public function __construct($alpha, $beta, $gamma, $methode, array $Tparam = [])
+	public function __construct(HttpRoute $route, array $TparamURL = [])
 	{
-		parent::__construct($alpha, $beta, $gamma, $methode, $Tparam);
-		if ($methode == "GET")
-		{	// création du jeton qui sauvegarde l'état lors de la création du formulaire
-			$this->jetonJSON = '{"depart":' . time()	// permet d'avoir une jeton qui change à chaque fois.
-							. ', "noeud":[' . $alpha . ',' . $beta . ',' . $gamma . ']}';	// position dans l'arborescence
-		}
-		elseif ($methode == "POST")
+		parent::__construct($route, $Tparam);
+		switch($route->getMethode())
 		{
-
-		}
-		else
-		{
-			throw new ApplicationException("Méthode inatendue pour un formulaire");
+			case "GET":
+				// création du jeton qui sauvegarde l'état lors de la création du formulaire
+				$this->jetonJSON = '{"depart":' . time()	// permet d'avoir une jeton qui change à chaque fois.
+								. ', "noeud":[' . $route->getAlpha() . ',' . $route->getBeta() . ',' . $route->getGamma() . ']}';	// position dans l'arborescence
+			break;
+			case "POST":
+				break;
+			default:
+				throw new ApplicationException("Méthode inatendue pour un formulaire");
 		}
 	}
 

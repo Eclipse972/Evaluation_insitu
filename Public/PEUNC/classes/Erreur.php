@@ -21,34 +21,24 @@ class Erreur extends Page {
 	protected $tire;
 	protected $corps;
 
-	public function __construct($alpha, $beta, $gamma, $methode) {
-		parent::__construct($alpha, $beta, $gamma, $methode);
+	public function __construct(HttpRoute $route)
+	{
+		parent::__construct($route);
 		$this->code = null;
 		$this->titre = "";
 		$this->corps = "";
 	}
 	// setters
-	public function setCodeErreur($code) {
-		$this->code = $code;
-	}
+	public function setCodeErreur($code)	{ $this->code = $code; }
 
-	public function setTitreErreur($titre) {
-		$this->titre = $titre;
-	}
+	public function setTitreErreur($titre)	{ $this->titre = $titre; }
 
-	public function setCorpsErreur($code)	{
-		$this->corps = $code;
-	}
+	public function setCorpsErreur($code)	{ $this->corps = $code; }
+	
 	// getters
-	public function getCodeErreur() {
-		return isset($this->code) ? ' ' . $this->code : 'X';
-	}
+	public function getCodeErreur()		{ return isset($this->code) ? ' ' . $this->code : 'X'; }
 
-	public function getTitreErreur() {
-		return $this->titre;
-	}
+	public function getTitreErreur()	{ return $this->titre; }
 
-	public function getCorpsErreur() {
-		return $this->corps;
-	}
+	public function getCorpsErreur()	{ return $this->corps; }
 }

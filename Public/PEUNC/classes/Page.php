@@ -31,23 +31,13 @@ class Page implements iPage	{
 	protected $vue			= "doctype.html";
 // FIN DE LA CONFIGURATION
 
-	// position
-	protected $alpha;
-	protected $beta;
-	protected $gamma;
-	protected $methode;
-	//protected $ID; inutile pour le moment
 
 	protected $T_paramURL	= [];
 
-	public function __construct($alpha, $beta, $gamma, $methode, array $TparamURL = [])
+	public function __construct(HttpRoute $route, array $TparamURL = [])
 	{
-		$this->alpha = $alpha;
-		$this->beta = $beta;
-		$this->gamma = $gamma;
-		$this->methode = $methode;
 		$this->entetePage = BDD::SELECT("texteMenu FROM Squelette WHERE alpha= ? AND beta= ? AND gamma= ? AND methode = ?",
-								[$alpha, $beta, $gamma, $methode]); // valeur par défaut
+								[$route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode()]); // valeur par défaut
 		foreach($TparamURL as $valeur)
 			$this->T_paramURL[] = htmlspecialchars($valeur);
 	}
@@ -110,16 +100,6 @@ class Page implements iPage	{
 	public function getParamURL($i = 0)	{ return (isset($this->T_paramURL[$i])) ? $this->T_paramURL[$i] : null; }
 
 	public function getCSS()			{ foreach($this->T_CSS as $feuilleCSS) echo"\t<link rel=\"stylesheet\" href=\"", $feuilleCSS,"\" />\n";	}
-
-	//public function getID()				{ return $this->ID; }
-
-	public function getAlpha()			{ return $this->alpha; }
-
-	public function getBeta()			{ return $this->beta; }
-
-	public function getGamma()			{ return $this->gamma; }
-
-	public function getMethode()		{ return $this->methode; }
 
 /* ***************************
  * méthodes statiques
