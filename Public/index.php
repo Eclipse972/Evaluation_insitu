@@ -16,21 +16,11 @@ spl_autoload_register(function($classe)
 
 try
 {
-	// à partir d'une requête Http on trouve la route
-	$route = new PEUNC\HttpRouter;
+	$route = new PEUNC\HttpRouter;				// à partir d'une requête Http on trouve la route
 
-	PEUNC\Page::SauvegardeEtat($route);	// sauvegarde de l'état courant
+	PEUNC\Page::SauvegardeEtat($route);			// sauvegarde de l'état courant
 
-	$MethodesSupportées = array(
-		"GET"	=> "PEUNC\ReponseGET",
-		"POST"	=> "PEUNC\ReponsePOST"	// pour le moment
-	);
-	if (isset($MethodesSupportées[$route->getMethode()]))
-		$ReponseClient = $MethodesSupportées[$route->getMethode()];
-	else throw new PEUNC\ApplicationException("M&eacute;thode Http inconnue : " . $route->getMethode());
-
-	// construction de la réponse en fonction de la route trouvée
-	$reponse = new $ReponseClient($route);
+	$reponse = new PEUNC\ReponseClient($route);	// construction de la réponse en fonction de la route trouvée
 }
 catch(PEUNC\ServeurException $e)
 {

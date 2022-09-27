@@ -7,8 +7,7 @@ class ReponseClient
 */
 {
 	protected $route;
-	protected $classePage;
-
+	
 	public function __construct(HttpRouter $route)
 	{
 		$this->route = $route;
@@ -17,7 +16,24 @@ class ReponseClient
 		if (!isset($classePage))
 			throw new ApplicationException("La classe de page n&apos;est pas d&eacute;finie dans le squelette.");
 
-		$this->classePage = $classePage;
+		switch($route->getMethode())
+		{
+			case "GET":
+				$PAGE = new $classePage($route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode(),
+										$this->PrepareParametres($_GET)
+									);
+				$PAGE->ExecuteControleur();
+				include $PAGE->getView(); // insertion de la vue
+				break;
+			case "POST":
+				$PAGE = new $classePage($route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode(),
+										$this->PrepareParametres($_POST)
+									);
+				$PAGE->ExecuteControleur();
+				break;
+			default:
+				throw new ApplicationException("M&eacute;thode http inconnue");
+		}
 	}
 
 	public function PrepareParametres($Tableau)
