@@ -30,7 +30,7 @@ interface iPage
 
 // méthodes statiques
 	public static function BaliseImage($src, $alt, $code);		// insère une image en tenant compte du répertoire image. Seul le premier paramètre est obligatoire
-	public static function SauvegardeEtat(HttpRouter $route);	// sauvegarde l'état courant dans la session
+	public static function SauvegardeEtat(HttpRoute $route);	// sauvegarde l'état courant dans la session
 
 // Autre
 	public function ExecuteControleur();// execute le controleur à partir de la position enregistrée dans l'objet

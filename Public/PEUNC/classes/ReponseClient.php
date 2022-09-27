@@ -3,12 +3,12 @@ namespace PEUNC;
 
 class ReponseClient
 /* Réponse à servir au client en fonction de la route trouvée suite à la requête http.
- * Classe nécesaire: HttpRouter chargée par l'autoloader
+ * Classe nécesaire: HttpRoute chargée par l'autoloader
 */
 {
 	protected $route;
 	
-	public function __construct(HttpRouter $route)
+	public function __construct(HttpRoute $route)
 	{
 		$classePage = BDD::SELECT("classePage FROM Squelette WHERE alpha= ? AND beta= ? AND gamma= ? AND methode = ?",
 								[$route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode()]);
@@ -27,7 +27,7 @@ class ReponseClient
 		if ($route->getMethode()=="GET")	include $PAGE->getView(); // insertion de la vue
 	}
 
-	public static function PrepareParametres(HttpRouter $route)
+	public static function PrepareParametres(HttpRoute $route)
 	/* Dans la table Squelette on récupère la liste des paramètres autorisés.
 	 * On construit un nouveau tableau qui ne contient que les clés autorisées et chaque valeur subit un nettoyage.
 	 * Par contre des paramètres manquant ne provoquent pas d'erreur.

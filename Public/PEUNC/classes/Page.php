@@ -136,7 +136,7 @@ class Page implements iPage	{
 		return '<img src="' . $src . '" alt="' . $alt . '" ' . $code . '>';
 	}
 
-	public static function SauvegardeEtat(HttpRouter $route)
+	public static function SauvegardeEtat(HttpRoute $route)
 	{
 		// sauvegarde de l'état précédent
 		if (isset($_SESSION["PEUNC"]['alpha'])) // défini => une page a été mémorisée

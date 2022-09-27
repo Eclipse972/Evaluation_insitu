@@ -1,7 +1,7 @@
 <?php
 namespace PEUNC;
 
-class HttpRouter
+class HttpRoute
 /*
  * Cette classe décode une requête http et renvoie :
  * 		- la position dans l'arborescence même s'il s'agit d'une erreur serveur
@@ -40,10 +40,10 @@ class HttpRouter
 				throw new ServeurException($_SERVER['REDIRECT_STATUS']);
 				break;
 			case 200:	// le script est lancé sans redirection
-				list($this->alpha, $this->beta, $this->gamma) = HttpRouter::SansRedirection();
+				list($this->alpha, $this->beta, $this->gamma) = HttpRoute::SansRedirection();
 				break;
 			case 404:
-				list($this->alpha, $this->beta, $this->gamma) = HttpRouter::Redirection404();
+				list($this->alpha, $this->beta, $this->gamma) = HttpRoute::Redirection404();
 				break;
 			default:
 				throw new ApplicationException("erreur inconnue");

@@ -16,7 +16,7 @@ spl_autoload_register(function($classe)
 
 try
 {
-	$route = new PEUNC\HttpRouter;				// à partir d'une requête Http on trouve la route
+	$route = new PEUNC\HttpRoute;				// à partir d'une requête Http on trouve la route
 
 	PEUNC\Page::SauvegardeEtat($route);			// sauvegarde de l'état courant
 
