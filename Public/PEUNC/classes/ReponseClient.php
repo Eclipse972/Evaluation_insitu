@@ -2,8 +2,9 @@
 namespace PEUNC;
 
 class ReponseClient
-// Réponse à servir au client en fonction de la route trouvée suite à la requête http.
-// Classe nécesaire: HttpRouter chargée par l'autoloader'
+/* Réponse à servir au client en fonction de la route trouvée suite à la requête http.
+ * Classe nécesaire: HttpRouter chargée par l'autoloader
+*/
 {
 	protected $route;
 	protected $classePage;
