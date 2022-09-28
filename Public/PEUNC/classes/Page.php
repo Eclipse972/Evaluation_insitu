@@ -34,13 +34,17 @@ class Page implements iPage	{
 
 	protected $T_paramURL	= [];
 
-	public function __construct(HttpRoute $route, array $TparamURL = [])
+	public function __construct(HttpRoute $route = null, array $TparamURL = [])
 	{
-		// valeur par défaut de l'en-tête
-		$this->entetePage = BDD::SELECT("texteMenu FROM Squelette WHERE alpha= ? AND beta= ? AND gamma= ? AND methode = ?",
-								[$route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode()]);
-		foreach($TparamURL as $valeur)
-			$this->T_paramURL[] = htmlspecialchars($valeur);
+		if (isset($route))
+		{
+			// valeur par défaut de l'en-tête
+			$this->entetePage = BDD::SELECT("texteMenu FROM Squelette WHERE alpha= ? AND beta= ? AND gamma= ? AND methode = ?",
+									[$route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode()]);
+			foreach($TparamURL as $valeur)
+				$this->T_paramURL[] = htmlspecialchars($valeur);
+		}
+		else $this->entetePage = "Erreur serveur";
 	}
 /* ***************************
  * MUTATEURS (SETTER)
