@@ -36,8 +36,9 @@ class Page implements iPage	{
 
 	public function __construct(HttpRoute $route, array $TparamURL = [])
 	{
+		// valeur par défaut de l'en-tête
 		$this->entetePage = BDD::SELECT("texteMenu FROM Squelette WHERE alpha= ? AND beta= ? AND gamma= ? AND methode = ?",
-								[$route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode()]); // valeur par défaut
+								[$route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode()]);
 		foreach($TparamURL as $valeur)
 			$this->T_paramURL[] = htmlspecialchars($valeur);
 	}
