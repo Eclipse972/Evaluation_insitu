@@ -3,11 +3,7 @@ $Oprof = new Professeur(isset($_SESSION["profID"]) ? $_SESSION["profID"] : 1);
 
 $this->setCSS("professeur");
 
-$this->setSection(	$Oprof->AfficherProfil()
-				.	$Oprof->AfficherGroupes()
-				.	$Oprof->AfficherDevoirs()
-				.	$Oprof->AfficherReferentiels()
-			);
+$this->setSection($Oprof->AfficherProfil());
 
 $this->setNav(Professeur::AfficherMenu());
 

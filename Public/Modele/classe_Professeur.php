@@ -34,12 +34,6 @@ class Professeur extends PEUNC\User
 			.	"<p>Courriel: "		. $this->courriel	. "</p>\n\n";
 	}
 
-	public function AfficherGroupes()		{ return self::AfficherRubrique("Vos classes/groupes", "Vue_Prof_groupes", $this->ID); }
-
-	public function AfficherReferentiels()	{ return self::AfficherRubrique("Vos r&eacute;f&eacute;rentiels", "Vue_Prof_referentiels", $this->ID); }
-
-	public function AfficherDevoirs()		{ return self::AfficherRubrique("Vos devoirs", "Vue_Prof_devoirs", $this->ID); }
-
 	// Méthodes statiques =========================================================================
 
 	public static function AfficherMenu()
@@ -51,27 +45,5 @@ class Professeur extends PEUNC\User
 			.	"<a href=#>&Eacute;valuer</a>\n"
 			.	"<a href=#>Synth&egrave;ses</a>\n"
 			.	"<a href=/deconnexion>D&eacute;connexion</a>\n";
-	}
-
-	public static function AfficherRubrique($titre, $vueBD, $profID)
-	{	// factorisation de l'affichage des rubriques
-		$code = "<h1>" . $titre . "</h1>\n";
-
-		$ReponseSQL = PEUNC\BDD::SELECT("nom FROM {$vueBD} WHERE profID = ?", [$profID]);
-
-		switch(PEUNC\BDD::SELECT("count(*) FROM {$vueBD} WHERE profID = ?", [$profID]))
-		{
-			case 0:		// aucune réponse
-				$code .= "<p>Vous n&apos;avez aucun groupe/classe</p>\n";
-				break;
-			case 1:		// réponse unique
-				$code .= "<p>{$ReponseSQL}</p>\n";
-				break;
-			default:	// construction de la liste
-				$code .= "<ul>\n";
-				foreach($ReponseSQL as $valeur)	$code .= "<li>{$valeur["nom"]}</li>\n";
-				$code .= "</ul>\n";
-		}
-		return $code . "\n";
 	}
 }
