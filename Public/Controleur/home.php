@@ -8,13 +8,7 @@ ob_start();	// début du code <section>
 $this->setSection(ob_get_contents());
 ob_end_clean();
 
-ob_start();	// début du code <nav>
-?>
-<a href=/connecter>CONNEXION</a>
-<a href=/demonstration>D&Eacute;MO</a>
-<?php
-$this->setNav(ob_get_contents());
-ob_end_clean();
+$this->setNav("<a href=/connecter>CONNEXION</a>\n<a href=/demonstration>D&Eacute;MO</a>\n");
 
 $this->setFooter("");
 $this->setView("doctype.html");
