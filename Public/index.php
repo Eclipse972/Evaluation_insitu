@@ -25,10 +25,7 @@ try
 catch(PEUNC\ServeurException $e)
 {
 	$PAGE = new PEUNC\Page();	// il n'y a pas de route
-	$PAGE->SetSection("<h1>" . $e->getMessage() . " - code: " . $e->getCode() . "</h1>\n"
-					. "<p>Image &agrave; venir</p>\n"
-					. "<p>Si le probl&egrave;me persiste envoyez-moi un courriel en cliquant sur l&apos;ic&ocirc;ne messagerie ci-dessous.</p>"
-				);
+	$PAGE->SetSection("<h1>" . $e->getMessage() . " - code: " . $e->getCode() . "</h1>\n");
 	$PAGE->setView("erreur.html");
 	include $PAGE->getView();
 }
