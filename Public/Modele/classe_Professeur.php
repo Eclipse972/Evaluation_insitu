@@ -27,8 +27,7 @@ class Professeur extends PEUNC\User
 	// Affichage ==================================================================================
 	public function AfficherProfil()
 	{
-		return	"<h1>Profil</h1>\n"
-			.	"<p>Pseudo: "		. $this->pseudo		. "</p>\n"
+		return	"<p>Pseudo: "		. $this->pseudo		. "</p>\n"
 			.	"<p>Nom: " 			. $this->nom		. "</p>\n"
 			.	"<p>Pr&eacute;nom: ". $this->prenom		. "</p>\n"
 			.	"<p>Courriel: "		. $this->courriel	. "</p>\n\n";
@@ -41,6 +40,7 @@ class Professeur extends PEUNC\User
 			.	"<a href=/devoirs>Devoirs</a>\n"
 			.	"<a href=/referentiels>R&eacute;f&eacute;rentiels</a>\n"
 			.	"<a href=#>&Eacute;valuer</a>\n"
+			.	"<a href=#>Planifier</a>\n"
 			.	"<a href=#>Synth&egrave;ses</a>\n"
 			.	"<a href=/deconnexion>D&eacute;connexion</a>\n";
 	}
