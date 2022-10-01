@@ -20,11 +20,11 @@ class Professeur extends PEUNC\User
 		// la suppression d'un profeseur peut avoir des conséquences sur d'autres objets
 	}
 
-	// setter
+	// SETTERS ====================================================================================
 
 	// GETTERS ====================================================================================
 
-	// Autre ======================================================================================
+	// Affichage ==================================================================================
 	public function AfficherProfil()
 	{
 		return	"<h1>Profil</h1>\n"
@@ -33,8 +33,6 @@ class Professeur extends PEUNC\User
 			.	"<p>Pr&eacute;nom: ". $this->prenom		. "</p>\n"
 			.	"<p>Courriel: "		. $this->courriel	. "</p>\n\n";
 	}
-
-	// Méthodes statiques =========================================================================
 
 	public static function AfficherMenu()
 	{
