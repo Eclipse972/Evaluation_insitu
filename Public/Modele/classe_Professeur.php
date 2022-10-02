@@ -30,7 +30,7 @@ class Professeur extends PEUNC\User
 		return	"<p><b>Pseudo: "	. $this->pseudo		. "</b></p>\n"
 			.	"<p>Nom: " 			. $this->nom		. "</p>\n"
 			.	"<p>Pr&eacute;nom: ". $this->prenom		. "</p>\n"
-			.	"<p>Courriel: "		. $this->courriel	. "</p>\n\n";
+			.	"<p>Courriel: "		. $this->courriel	. "</p>\n";
 	}
 
 	public static function AfficherMenu()
