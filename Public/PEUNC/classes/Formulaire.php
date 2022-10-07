@@ -19,7 +19,7 @@ namespace PEUNC;
 			case "POST":
 				break;
 			default:
-				throw new ApplicationException("Méthode inatendue pour un formulaire");
+				throw new Exception("Méthode inatendue pour un formulaire");
 		}
 	}
 

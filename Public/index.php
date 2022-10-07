@@ -37,7 +37,7 @@ catch(PDOException $e)
 	$PAGE->setView("erreur.html");
 	include $PAGE->getView();
 }
-catch(PEUNC\ApplicationException $e)
+catch(PEUNC\Exception $e)
 {
 	$PAGE = new PEUNC\Page($route);
 	$PAGE->setHeaderText("<p>Erreur de l'application</p>");

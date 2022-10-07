@@ -46,7 +46,7 @@ class HttpRoute
 				list($this->alpha, $this->beta, $this->gamma) = HttpRoute::Redirection404();
 				break;
 			default:
-				throw new ApplicationException("erreur inconnue");
+				throw new Exception("erreur inconnue");
 		}
 
 		$this->methode = $_SERVER['REQUEST_METHOD'];
@@ -91,7 +91,7 @@ class HttpRoute
 				break;
 			case"POST":	// le jeton CSRF contient des infos sur le formuaire notemment sa position dans l'arborescence
 				if (!isset($_POST["CSRF"]))	// si le fomulaire ne contient pas de jeton CSRF
-					throw new ApplicationException("Jeton CSRF inexistant");
+					throw new Exception("Jeton CSRF inexistant");
 
 				$jeton = Formulaire::DecoderJeton($_POST["CSRF"]);
 

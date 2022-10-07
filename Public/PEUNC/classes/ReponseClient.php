@@ -13,7 +13,7 @@ class ReponseClient
 		$classePage = BDD::SELECT("classePage FROM Squelette WHERE alpha= ? AND beta= ? AND gamma= ? AND methode = ?",
 								[$route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode()]);
 		if (!isset($classePage))
-			throw new ApplicationException("La classe de page n&apos;est pas d&eacute;finie dans le squelette.");
+			throw new Exception("La classe de page n&apos;est pas d&eacute;finie dans le squelette.");
 
 		// pré-traitement
 		$Tparam = self::PrepareParametres($route);
@@ -46,7 +46,7 @@ class ReponseClient
 				$Tableau = $_POST;
 				break;
 			default:
-				throw new ApplicationException("M&eacute;thode http inconnue");
+				throw new Exception("M&eacute;thode http inconnue");
 		}
 
 		// récupère la liste des paramètres autorisés
