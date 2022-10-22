@@ -29,6 +29,7 @@ class Page implements iPage	{
 	protected $scriptNav	= "";
 	protected $PiedDePage	= "<p>Pied de page &agrave; d&eacute;finir</p>";
 	protected $vue			= "doctype.html";
+	protected $route;
 // FIN DE LA CONFIGURATION
 
 
@@ -36,6 +37,7 @@ class Page implements iPage	{
 
 	public function __construct(HttpRoute $route = null, array $TparamURL = [])
 	{
+		$this->route = $route;
 		if (isset($route))
 		{
 			// valeur par défaut de l'en-tête
@@ -107,6 +109,23 @@ class Page implements iPage	{
 	public function getCSS()			{ foreach($this->T_CSS as $feuilleCSS) echo"\t<link rel=\"stylesheet\" href=\"", $feuilleCSS,"\" />\n";	}
 
 /* ***************************
+ * AUTRE
+ * ***************************/
+
+	public function ExecuteControleur(HttpRoute $route)
+	{
+		$script = BDD::SELECT("controleur FROM Squelette WHERE alpha= ? AND beta= ? AND gamma= ? AND methode = ?",
+							[$route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode()]);
+		if($script == "")
+			throw new Exception("Controleur non d&eacute;fini");
+		elseif (file_exists(self::DOSSIER_CONTROLEUR. $script))	// script dans le dossier des controleurs
+			require(self::DOSSIER_CONTROLEUR . $script);
+		elseif (file_exists($script))							//	script défini de manière absolue
+			require($script);
+		else throw new Exception("Controleur inexistant");
+	}
+
+/* ***************************
  * méthodes statiques
  * ***************************/
 
@@ -140,58 +159,41 @@ class Page implements iPage	{
 		$_SESSION["PEUNC"]['gamma']	= $route->getGamma();
 	}
 
-/* ***************************
- * AUTRE
- * ***************************/
-
-	public function ExecuteControleur(HttpRoute $route)
-	{
-		$script = BDD::SELECT("controleur FROM Squelette WHERE alpha= ? AND beta= ? AND gamma= ? AND methode = ?",
-							[$route->getAlpha(), $route->getBeta(), $route->getGamma(), $route->getMethode()]);
-		if($script == "")
-			throw new Exception("Controleur non d&eacute;fini");
-		elseif (file_exists(self::DOSSIER_CONTROLEUR. $script))	// script dans le dossier des controleurs
-			require(self::DOSSIER_CONTROLEUR . $script);
-		elseif (file_exists($script))							//	script défini de manière absolue
-			require($script);
-		else throw new Exception("Controleur inexistant");
-	}
-
- 	public function AfficherOnglets()
+ 	public static function CodeOnglets(HttpRoute $route)
  	{
 		$T_Onglets = BDD::Liste_niveau();
-		echo "<ul>\n";
+		$code = "<ul>\n";
 		foreach($T_Onglets as $alpha => $code)
 		{
 			if (($alpha >= Page::ALPHA_MINI) && ($alpha <= Page::ALPHA_MAXI))
-				echo "\t<li>" . (($alpha == $this->alpha) ? str_replace('href', 'id="alpha_actif" href', $code) : $code) . "</li>\n";
+				$code .= "\t<li>" . (($alpha == $route->getAlpha()) ? str_replace('href', 'id="alpha_actif" href', $code) : $code) . "</li>\n";
 		}
-		echo "\t</ul>\n";
+		return $code . "\t</ul>\n";
 	}
 
-	public function AfficherMenu()
+	public static function CodeMenu(HttpRoute $route)
 	{
-		$T_item = BDD::Liste_niveau($this->alpha);
-		echo "\t<ul>\n";
+		$T_item = BDD::Liste_niveau($route->getAlpha());
+		$codeMenu = "\t<ul>\n";
 		foreach($T_item as $beta => $code)
 		{
-			echo "\t<li>", (($beta == $this->beta) ? str_replace('href', 'id="beta_actif" href', $code) : $code), "</li>\n";
-			if ($beta == $this->beta)	// sous-menu?
+			$codeMenu .= "\t<li>" . (($beta == $route->getBeta()) ? str_replace('href', 'id="beta_actif" href', $code) : $code) . "</li>\n";
+			if ($beta == $route->getBeta())	// sous-menu?
 			{
-				$T_sous_item = BDD::Liste_niveau($this->alpha, $this->beta);
+				$T_sous_item = BDD::Liste_niveau($route->getAlpha(), $route->getBeta());
 				if (isset($T_sous_item))	// génération sous-menu s'il existe
 				{
-					echo "\t<ul>\n";
+					$codeMenu .= "\t<ul>\n";
 					foreach($T_sous_item as $gamma => $sous_code)
-						echo "\t\t<li>", ($gamma == $this->gamma) ? str_replace('href', 'id="gamma_actif" href', $sous_code) : $sous_code, "</li>\n";
-					echo "\t</ul>\n";
+						$codeMenu .= "\t\t<li>" . (($gamma == $route->getGamma()) ? str_replace('href', 'id="gamma_actif" href', $sous_code) : $sous_code) . "</li>\n";
+					$codeMenu .= "\t</ul>\n";
 				}
 			}
 		}
-		echo "\t</ul>\n";
+		return $codeMenu . "\t</ul>\n";
 	}
 
-	public function URLprecedente()
+	public static function URLprecedente()
 	{
 		return BDD::SELECT("URL FROM Vue_Routes WHERE niveau1 = ? AND niveau2 = ? AND niveau3 = ?",
 						array($_SESSION["PEUNC"]['alphaPrecedent'],$_SESSION["PEUNC"]['betaPrecedent'],$_SESSION["PEUNC"]['gammaPrecedent']));
