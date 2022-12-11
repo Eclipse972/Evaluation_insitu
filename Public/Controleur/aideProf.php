@@ -11,8 +11,7 @@ ob_start();	// début du code <section>
 </ul>
 <p><a href=/professeur>Retour &agrave; la page Professeur</a></p>
 <?php
-$this->setSection(ob_get_contents());
-ob_end_clean();
+$this->setSection(ob_get_clean());
 
 $this->setFooter("");
 $this->setView("doctype.html");

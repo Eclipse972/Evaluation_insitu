@@ -5,8 +5,7 @@ ob_start();	// début du code <section>
 <p>Pour le moment envoyez-moi un courriel pour modifier vos informations.</p>
 <p><a href=/professeur>Retour</a></p>
 <?php
-$this->setSection(ob_get_contents());
-ob_end_clean();
+$this->setSection(ob_get_clean());
 
 $this->setFooter("");
 $this->setView("doctype.html");
